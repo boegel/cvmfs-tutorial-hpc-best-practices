@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../03_configuration/">
+        <link rel="prev" href="../access/">
       
       
-        <link rel="next" href="../05_performance/">
+        <link rel="next" href="../troubleshooting/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Troubleshooting and debugging - Best Practices for CernVM-FS in HPC</title>
+        <title>Configuration on HPC systems - Best Practices for CernVM-FS in HPC</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-and-debugging-cernvm-fs" class="md-skip">
+        <a href="#configuring-cernvm-fs-on-hpc-infrastructure" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting and debugging
+              Configuration on HPC systems
             
           </span>
         </div>
@@ -496,25 +496,6 @@
       
   
   
-  
-    <li class="md-nav__item">
-      <a href="../03_configuration/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Configuration on HPC systems
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -530,7 +511,7 @@
           
   
   <span class="md-ellipsis">
-    Troubleshooting and debugging
+    Configuration on HPC systems
   </span>
   
 
@@ -541,7 +522,7 @@
         
   
   <span class="md-ellipsis">
-    Troubleshooting and debugging
+    Configuration on HPC systems
   </span>
   
 
@@ -563,129 +544,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#error-messages" class="md-nav__link">
+  <a href="#diskless-workernodes" class="md-nav__link">
     <span class="md-ellipsis">
-      Error messages
+      Diskless workernodes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#offline-workernodes" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration
+      Offline workernodes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#logs" class="md-nav__link">
+  <a href="#alien-cache" class="md-nav__link">
     <span class="md-ellipsis">
-      Logs
+      Alien cache
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stats" class="md-nav__link">
+  <a href="#security" class="md-nav__link">
     <span class="md-ellipsis">
-      Stats
+      Security
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-problems" class="md-nav__link">
+  <a href="#syncing-a-cernvm-fs-repository-to-another-filesystem" class="md-nav__link">
     <span class="md-ellipsis">
-      Common problems
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common problems">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#network-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Network issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#firewall" class="md-nav__link">
-    <span class="md-ellipsis">
-      Firewall
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bandwidth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bandwidth
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proxy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#incorrect-repository-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Incorrect repository configuration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mount-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mount problems
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cache-corruption" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cache corruption
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring
+      Syncing a CernVM-FS repository to another filesystem
     </span>
   </a>
   
@@ -705,7 +602,26 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_performance/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting and debugging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -724,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_storage_backends/" class="md-nav__link">
+      <a href="../storage-backends/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07_containers/" class="md-nav__link">
+      <a href="../containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -762,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10_getting_started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -821,129 +737,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#error-messages" class="md-nav__link">
+  <a href="#diskless-workernodes" class="md-nav__link">
     <span class="md-ellipsis">
-      Error messages
+      Diskless workernodes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#offline-workernodes" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration
+      Offline workernodes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#logs" class="md-nav__link">
+  <a href="#alien-cache" class="md-nav__link">
     <span class="md-ellipsis">
-      Logs
+      Alien cache
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stats" class="md-nav__link">
+  <a href="#security" class="md-nav__link">
     <span class="md-ellipsis">
-      Stats
+      Security
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-problems" class="md-nav__link">
+  <a href="#syncing-a-cernvm-fs-repository-to-another-filesystem" class="md-nav__link">
     <span class="md-ellipsis">
-      Common problems
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Common problems">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#network-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Network issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#firewall" class="md-nav__link">
-    <span class="md-ellipsis">
-      Firewall
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bandwidth" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bandwidth
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proxy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#incorrect-repository-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Incorrect repository configuration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mount-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mount problems
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cache-corruption" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cache corruption
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      Monitoring
+      Syncing a CernVM-FS repository to another filesystem
     </span>
   </a>
   
@@ -967,84 +799,19 @@
   
 
 
-<h1 id="troubleshooting-and-debugging-cernvm-fs">Troubleshooting and debugging CernVM-FS<a class="headerlink" href="#troubleshooting-and-debugging-cernvm-fs" title="Permanent link">&para;</a></h1>
-<p>only client-side, assumption is that CernVM-FS replica servers and proxy servers are working correctly (?)</p>
-<p>see also https://github.com/EESSI/filesystem-layer/blob/main/README.md</p>
-<h2 id="error-messages">Error messages<a class="headerlink" href="#error-messages" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>$ ls /cvmfs/software.eessi.io
-ls: cannot access &#39;/cvmfs/software.eessi.io&#39;: No such file or directory
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>failed to discover HTTP proxy servers (23 - proxy auto-discovery failed)
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Failed to initialize root file catalog (16 - file catalog failure)
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Failed to transfer ownership of /var/lib/cvmfs/shared to cvmfs
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>transport endpoint is not connected
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$ /cvmfs/config-repo.cern.ch
-ls: cannot open directory &#39;/cvmfs/config-repo.cern.ch&#39;: Too many levels of symbolic links
-</code></pre></div>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>cvmfs_config showconfig software.eessi.io
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo cvmfs_talk -i software.eessi.io parameters
-</code></pre></div>
-<p><code>CVMFS_REPOSITORIES</code> can be used to <em>limit</em> access to specific repositories</p>
-<h2 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h2>
-<p>only syslog?</p>
-<p>debug log
-- <code>CVMFS_DEBUGLOG=/tmp/cvmfs.log</code>
-- https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#debug-logs
-- via xattrs: <code>attr -g logbuffer /cvmfs/software.eessi.io</code> (repo must be mounted, no sudo required)</p>
-<h2 id="stats">Stats<a class="headerlink" href="#stats" title="Permanent link">&para;</a></h2>
-<h2 id="common-problems">Common problems<a class="headerlink" href="#common-problems" title="Permanent link">&para;</a></h2>
-<h3 id="network-issues">Network issues<a class="headerlink" href="#network-issues" title="Permanent link">&para;</a></h3>
-<h4 id="firewall">Firewall<a class="headerlink" href="#firewall" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>telnet</code></li>
-<li><code>tcptraceroute</code></li>
-<li><code>curl --head http://aws-eu-central-s1.eessi.science/cvmfs/software.eessi.io/.cvmfspublished</code></li>
-</ul>
-<h4 id="bandwidth">Bandwidth<a class="headerlink" href="#bandwidth" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>iperf</code></li>
-</ul>
-<h4 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h4>
-<p><code>CVMFS_HTTP_PROXY</code></p>
-<p>https://cvmfs.readthedocs.io/en/stable/cpt-squid.html</p>
-<p><code>http_proxy=http://squid.vega.pri:3128 curl -vs http://aws-eu-central-s1.eessi.science/cvmfs/software.eessi.io/.cvmfspublished | cat -v</code></p>
-<p><div class="highlight"><pre><span></span><code>http_proxy=http://squid.vega.pri:3128 curl --head http://aws-eu-west1.stratum1.cvmfs.eessi-infra.org/cvmfs/pilot.eessi-hpc.org/.cvmfspublished
-HTTP/1.1 200 OK
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$ http_proxy=http://squid.vega.pri:3128 curl --head http://aws-eu-central-s1.eessi.science/cvmfs/software.eessi.io/.cvmfspublished
-HTTP/1.1 403 Forbidden
-</code></pre></div></p>
-<h3 id="incorrect-repository-configuration">Incorrect repository configuration<a class="headerlink" href="#incorrect-repository-configuration" title="Permanent link">&para;</a></h3>
-<p><code>/etc/cvmfs/keys</code></p>
-<p><code>/etc/cvmfs/default.local</code></p>
-<p><code>/etc/cvmfs/domain.d</code></p>
-<h3 id="mount-problems">Mount problems<a class="headerlink" href="#mount-problems" title="Permanent link">&para;</a></h3>
-<p>manual mount:</p>
-<ul>
-<li>with <code>mount -t cvmfs</code></li>
-<li>with <code>sudo /usr/bin/cvmfs2 ...</code></li>
-</ul>
-<h3 id="cache-corruption">Cache corruption<a class="headerlink" href="#cache-corruption" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo time cvmfs_fsck -j 8 /var/lib/cvmfs/shared
-</code></pre></div>
-<h2 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>cvmfs_talk -i software.eessi.io revision
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cvmfs_config stat software.eessi.io
-</code></pre></div>
+<h1 id="configuring-cernvm-fs-on-hpc-infrastructure">Configuring CernVM-FS on HPC infrastructure<a class="headerlink" href="#configuring-cernvm-fs-on-hpc-infrastructure" title="Permanent link">&para;</a></h1>
+<h2 id="diskless-workernodes">Diskless workernodes<a class="headerlink" href="#diskless-workernodes" title="Permanent link">&para;</a></h2>
+<h2 id="offline-workernodes">Offline workernodes<a class="headerlink" href="#offline-workernodes" title="Permanent link">&para;</a></h2>
+<h2 id="alien-cache">Alien cache<a class="headerlink" href="#alien-cache" title="Permanent link">&para;</a></h2>
+<h2 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h2>
+<h2 id="syncing-a-cernvm-fs-repository-to-another-filesystem">Syncing a CernVM-FS repository to another filesystem<a class="headerlink" href="#syncing-a-cernvm-fs-repository-to-another-filesystem" title="Permanent link">&para;</a></h2>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 21, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 24, 2023</span>
       
     
   </small>

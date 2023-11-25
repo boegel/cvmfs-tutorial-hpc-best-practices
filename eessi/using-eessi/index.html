@@ -500,35 +500,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pilot-repositories-to-review" class="md-nav__link">
+  <a href="#0-is-eessi-available" class="md-nav__link">
     <span class="md-ellipsis">
-      Pilot repositories (TO REVIEW)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pilot repositories (TO REVIEW)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-current-pilot-repositories" class="md-nav__link">
-    <span class="md-ellipsis">
-      The current pilot repositories
+      0) Is EESSI available?
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-get-access" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#1-initialise-shell-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      How to get access
+      1) Initialise shell environment
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#2-load-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Load module(s)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-use-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) Use software
+    </span>
+  </a>
   
 </li>
       
@@ -573,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03_configuration/" class="md-nav__link">
+      <a href="../../configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -592,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting-debugging/" class="md-nav__link">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -611,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../05_performance/" class="md-nav__link">
+      <a href="../../performance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -630,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../06_storage_backends/" class="md-nav__link">
+      <a href="../../storage-backends/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -649,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../07_containers/" class="md-nav__link">
+      <a href="../../containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -668,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../10_getting_started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -727,35 +730,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pilot-repositories-to-review" class="md-nav__link">
+  <a href="#0-is-eessi-available" class="md-nav__link">
     <span class="md-ellipsis">
-      Pilot repositories (TO REVIEW)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pilot repositories (TO REVIEW)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-current-pilot-repositories" class="md-nav__link">
-    <span class="md-ellipsis">
-      The current pilot repositories
+      0) Is EESSI available?
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-get-access" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#1-initialise-shell-environment" class="md-nav__link">
     <span class="md-ellipsis">
-      How to get access
+      1) Initialise shell environment
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#2-load-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      2) Load module(s)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-use-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      3) Use software
+    </span>
+  </a>
   
 </li>
       
@@ -778,85 +784,102 @@
 
 
 <h1 id="using-eessi">Using EESSI<a class="headerlink" href="#using-eessi" title="Permanent link">&para;</a></h1>
-<h2 id="pilot-repositories-to-review">Pilot repositories (TO REVIEW)<a class="headerlink" href="#pilot-repositories-to-review" title="Permanent link">&para;</a></h2>
-<h3 id="the-current-pilot-repositories">The current pilot repositories<a class="headerlink" href="#the-current-pilot-repositories" title="Permanent link">&para;</a></h3>
+<p>Using the software installations provided by the EESSI CernVM-FS repository <code>software.eessi.io</code>
+is fairly straightforward.</p>
+<p>Let's break it down step by step.</p>
+<h2 id="0-is-eessi-available">0) Is EESSI available?<a class="headerlink" href="#0-is-eessi-available" title="Permanent link">&para;</a></h2>
+<p>First, check whether the EESSI <a href="../../cvmfs/what-is-cvmfs/">CernVM-FS</a> repository is available on your system.</p>
+<p>Try checking the contents of the <code>/cvmfs/software.eessi.io</code> directory with the <code>ls</code> command:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/cvmfs/software.eessi.io
+host_injections<span class="w">  </span>README<span class="w">  </span>versions
+</code></pre></div>
+<p>If you see an error message like "<code>No such file or directory</code>", then either the CernVM-FS client
+is not installed on your system, or the configuration for the EESSI repository is not available.
+In that case, you may want to revise the <a href="../../access/">Accessing a CernVM-FS repository</a> section,
+or go through the <a href="../../troubleshooting/">Troubleshooting</a> section.</p>
+<details class="note">
+<summary>Don't be fooled by <code>autofs</code> <em>(click to expand)</em></summary>
+<p>The <code>/cvmfs</code> directory may seem empty at first, because CernVM-FS repositories are automatically mounted
+as they are accessed via <a href="https://www.kernel.org/doc/html/latest/filesystems/autofs.html"><code>autofs</code></a>.</p>
+<p>So rather than just using "<code>ls /cvmfs/</code>" to check which CernVM-FS repositories are available on your system,
+you should try to directly access a specific repository as shown above with EESSI.</p>
+<p>For more information on various aspects of mounting of CernVM-FS repositories, <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#mounting">see the CernVM-FS documentation</a>.</p>
+</details>
+<h2 id="1-initialise-shell-environment">1) Initialise shell environment<a class="headerlink" href="#1-initialise-shell-environment" title="Permanent link">&para;</a></h2>
+<p>If the EESSI repository is available, you can proceed to preparing your shell environment for using
+a particular version of EESSI by <em>sourcing</em> the provided initialisation script by running the <code>source</code> command:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/cvmfs/software.eessi.io/versions/2023.06/init/bash
+Found<span class="w"> </span>EESSI<span class="w"> </span>pilot<span class="w"> </span>repo<span class="w"> </span>@<span class="w"> </span>/cvmfs/software.eessi.io/versions/2023.06!
+archdetect<span class="w"> </span>says<span class="w"> </span>x86_64/amd/zen2
+Using<span class="w"> </span>x86_64/amd/zen2<span class="w"> </span>as<span class="w"> </span>software<span class="w"> </span>subdirectory.
+Using<span class="w"> </span>/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>MODULEPATH.
+Found<span class="w"> </span>Lmod<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>at<span class="w"> </span>/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/.lmod/lmodrc.lua
+Initializing<span class="w"> </span>Lmod...
+Prepending<span class="w"> </span>/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all<span class="w"> </span>to<span class="w"> </span><span class="nv">$MODULEPATH</span>...
+Environment<span class="w"> </span><span class="nb">set</span><span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>EESSI<span class="w"> </span>pilot<span class="w"> </span>software<span class="w"> </span>stack,<span class="w"> </span>have<span class="w"> </span>fun!
+</code></pre></div>
+<details class="note">
+<summary>Details on changes made to the shell environment <em>(click to expand)</em></summary>
+<p>The initialisation script is a simple bash script that changes a couple of environment variables:</p>
 <ul>
-<li>2021.12</li>
-<li>2023.04</li>
-<li>2023.06</li>
+<li>A set of <code>$EESSI_*</code> environment variables is defined;</li>
+<li>The <code>$PS1</code> environment variable that specifies the <a href="https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt">shell prompt</a>
+  is updated to indicate that your shell session has been initialised for EESSI;</li>
+<li>The location of the tools provided by the EESSI compatibility layer are prepended to the <code>$PATH</code> environment variable;</li>
+<li>Lmod, which is included in the EESSI compatibility layer, is initialised to ensure that the <code>module</code> command is defined,
+  and that the Lmod spider cache that is included in the EESSI software layer is picked up;</li>
+<li>The location to the software installations that are optimised for the CPU microarchitecture of the client system
+  is prepended to the <code>$MODULEPATH</code> environment variable by running a "<code>module use</code>" command.</li>
 </ul>
-<h3 id="how-to-get-access">How to get access<a class="headerlink" href="#how-to-get-access" title="Permanent link">&para;</a></h3>
-<p><strong>step 1: Is EESSI accessible on your system?</strong></p>
-<p>you can run a command to see if you already have access to the EESSI repository on your system.</p>
-<p>If you run the command and get the following result. You have access to EESSI on your system:
-<div class="highlight"><pre><span></span><code>$ ls /cvmfs/pilot.eessi-hpc.org
-host_injections  latest  versions
-</code></pre></div>
-If see an error message, you do not yet have aceess to EESSI on your system:
-<div class="highlight"><pre><span></span><code>$ ls /cvmfs/pilot.eessi-hpc.org
-ls: /cvmfs/pilot.eessi-hpc.org: No such file or directory
-</code></pre></div>
-You and find in the EESSI documentation how to install CernVM-FS <a href="https://www.eessi.io/docs/getting_access/native_installation/">natively</a> or in a <a href="https://www.eessi.io/docs/getting_access/eessi_container/">container</a>.</p>
-<p><strong>step2: Setting up you environment</strong></p>
-<p>To set up the EESSI environment, simply run the command:
-<div class="highlight"><pre><span></span><code>$ source /cvmfs/pilot.eessi-hpc.org/latest/init/bash
-</code></pre></div>
-If you would like specify the repository you can simply replace <code>latest</code> with one of the pilot repositories (<code>2021.12</code>, <code>2023.04</code>, <code>2023.06</code>).</p>
-<!-- Maybe link to EESSI documentation on how to get access -->
+</details>
+<p>Note how the CPU microarchitecture is being auto-detected, which determines which path that points to a set of
+environment module files is used to update <code>$MODULEPATH</code>.</p>
+<p>This ensures that the modules that will be loaded provide access to software installations from the EESSI software
+layer that are <em>optimised</em> for the system you are using EESSI on.</p>
+<h2 id="2-load-modules">2) Load module(s)<a class="headerlink" href="#2-load-modules" title="Permanent link">&para;</a></h2>
+<p>After initialising your shell environment for using EESSI, you can start exploring the EESSI software layer
+using the <code>module</code> command.</p>
+<p>Using "<code>module avail</code>" (or "<code>ml av</code>"), you can check which software is available.
+Without extra arguments, "<code>module avail</code>" will produce an overview of <em>all</em> available software.
+By passing an extra argument you can filter the results and search for specific software:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>tensorflow
 
-<p><strong>Step 3: Run some basic commands</strong></p>
-<p>To see which modules are available. you can run:
-<div class="highlight"><pre><span></span><code>[EESSI pilot 2021.12] $ module avail 
+-----<span class="w"> </span>/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/modules/all<span class="w"> </span>-----
 
----------------------------------------------------- /cvmfs/pilot.eessi-hpc.org/versions/2021.12/software/linux/x86_64/amd/zen2/modules/all ----------------------------------------------------
-ant/1.10.8-Java-11                                              jbigkit/2.1-GCCcore-10.3.0                      OpenMPI/4.1.1-GCC-10.3.0
-Arrow/0.17.1-foss-2020a-Python-3.8.2                            JsonCpp/1.9.4-GCCcore-9.3.0                     OpenPGM/5.2.122-GCCcore-9.3.0
-Bazel/3.6.0-GCCcore-9.3.0                                       LAME/3.100-GCCcore-9.3.0                        OpenSSL/1.1                                        (D)
-Bison/3.5.3-GCCcore-9.3.0                                       LAME/3.100-GCCcore-10.3.0                       OSU-Micro-Benchmarks/5.6.3-gompi-2020a
-Bison/3.7.6-GCCcore-10.3.0                                      libarchive/3.5.1-GCCcore-10.3.0                 OSU-Micro-Benchmarks/5.7.1-gompi-2021a
-Boost/1.72.0-gompi-2020a
-</code></pre></div></p>
-<p>Load modules with module load package/version, e.g., module load R/4.1.0-foss-2021a, and try out the software. See below for a short session:</p>
-<div class="highlight"><pre><span></span><code>[EESSI pilot 2021.12] $ module load R/4.1.0-foss-2021a
-[EESSI pilot 2021.12] $ which R
-/cvmfs/pilot.eessi-hpc.org/versions/2021.12/software/linux/x86_64/intel/skylake_avx512/software/R/4.1.0-foss-2021a/bin/R
-[EESSI pilot 2021.12] $ R --version
-R version 4.1.0 (2021-05-18) -- &quot;Camp Pontanezen&quot;
-Copyright (C) 2021 The R Foundation for Statistical Computing
-Platform: x86_64-pc-linux-gnu (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under the terms of the
-GNU General Public License versions 2 or 3.
-For more information about these matters see
-https://www.gnu.org/licenses/.
+<span class="w">    </span>TensorFlow/2.13.0-foss-2023a
 </code></pre></div>
-<p><strong>Step 4: run a demo with GROMACS</strong></p>
-<p>First clone the eessi-demo git repository and move into the resulting directory.
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/EESSI/eessi-demo.git
-$ cd eessi-demo
-$ls -l
-drwxr-xr-x  5 example  users    160 Nov 23  2020 Bioconductor
-drwxr-xr-x  3 example  users     96 Jan 26 20:17 CitC
-drwxr-xr-x  5 example  users    160 Jan 26 20:17 GROMACS
--rw-r--r--  1 example  users  18092 Jan 26 20:17 LICENSE
-drwxr-xr-x  3 example  users     96 Jan 26 20:17 Magic_Castle
-drwxr-xr-x  4 example  users    128 Nov 24  2020 OpenFOAM
--rw-r--r--  1 example  users    546 Jan 26 20:17 README.md
-drwxr-xr-x  5 example  users    160 Nov 23  2020 TensorFlow
-drwxr-xr-x  6 example  users    192 Jan 26 20:17 scripts
+<p>To start <em>using</em> software you should <em>load</em> the corresponding environment module files
+using "<code>module load</code>" (or "<code>ml</code>"). For example:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>TensorFlow/2.13.0-foss-2023a
 </code></pre></div>
-Then run the following commands to do a demo with GROMACS
-<div class="highlight"><pre><span></span><code>$ source /cvmfs/pilot.eessi-hpc.org/latest/init/bash
-[EESSI pilot 2021.12] $ cd GROMACS
-[EESSI pilot 2021.12] $ ./run.sh
-
-GROMACS:      gmx mdrun, version 2020.1-EasyBuild-4.5.0
-Executable:   /cvmfs/pilot.eessi-hpc.org/versions/2021.12/software/linux/x86_64/intel/haswell/software/GROMACS/2020.1-foss-2020a-Python-3.8.2/bin/gmx
-...
-starting mdrun &#39;Protein&#39;
-1000 steps,      2.5 ps.
-</code></pre></div></p>
+<p>A "<code>module load</code>" command usually does not produce any output, but it updates you shell environment
+to make the software ready to use.</p>
+<p>For more information on the <code>module</code> command, see the
+<a href="https://lmod.readthedocs.io/en/latest/010_user.html">User Guide for Lmod</a>.</p>
+<h2 id="3-use-software">3) Use software<a class="headerlink" href="#3-use-software" title="Permanent link">&para;</a></h2>
+<p>After loading a module, you should be able to use the corresponding software.</p>
+<p>For example, after loading the <code>TensorFlow/2.13.0-foss-2023a</code> module, you can start a Python session
+and play with the <code>tensorflow</code> Python package:</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">__version__</span>
+<span class="s1">&#39;2.13.0&#39;</span>
+</code></pre></div>
+<p>Keep in mind that you are using a Python installation provided by the EESSI software layer here,
+<em>not</em> the Python version that may be provided by your client OS:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>python
+/cvmfs/software.eessi.io/versions/2023.06/software/linux/x86_64/amd/zen2/software/Python/3.11.3-GCCcore-12.3.0/bin/python
+</code></pre></div>
+<details class="note">
+<summary>Initial start-up delay <em>(click to expand)</em></summary>
+<p>You may notice a bit of "lag" initially when starting to use software provided by the EESSI software layer.</p>
+<p>This is expected, since CernVM-FS may need to first download the files that are required
+to run the software you are using;
+see also <a href="../../cvmfs/what-is-cvmfs/#features-ondemand">On-demand downloading of files and metadata</a>.</p>
+<p>You should not observe any significant start-up delays anymore when running the same software shortly after,
+since then CernVM-FS will be able to serve the necessary files from the local client cache;
+see also <a href="../../cvmfs/what-is-cvmfs/#features-caching">Multi-level caching</a>.</p>
+</details>
 <hr />
 <p><em>(next: <a href="../../access/">Accessing a CernVM-FS repository</a>)</em></p>
 
@@ -865,7 +888,7 @@ starting mdrun &#39;Protein&#39;
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 24, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 25, 2023</span>
       
     
   </small>
