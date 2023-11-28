@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -213,6 +213,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
         
@@ -229,6 +230,7 @@
     
       
       
+  
   
   
   
@@ -268,6 +270,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../cvmfs/what-is-cvmfs/" class="md-nav__link">
         
@@ -288,6 +291,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../cvmfs/technical-details/" class="md-nav__link">
         
@@ -305,6 +309,7 @@
             
               
                 
+  
   
   
   
@@ -335,6 +340,7 @@
   
   
     
+  
   
   
     
@@ -373,6 +379,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../what-is-eessi/" class="md-nav__link">
         
@@ -390,6 +397,7 @@
             
               
                 
+  
   
   
   
@@ -413,6 +421,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../inspiration/" class="md-nav__link">
         
@@ -433,6 +442,7 @@
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -538,7 +548,7 @@
           <li class="md-nav__item">
   <a href="#cpu_detection" class="md-nav__link">
     <span class="md-ellipsis">
-      CPU detection via archspec
+      CPU detection via archspec or archdetect
     </span>
   </a>
   
@@ -577,12 +587,34 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../using-eessi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Using EESSI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting support
   </span>
   
 
@@ -604,12 +636,13 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../access/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Accessing a repository
+    Accessing repositories
   </span>
   
 
@@ -620,6 +653,7 @@
     
       
       
+  
   
   
   
@@ -642,6 +676,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../troubleshooting/" class="md-nav__link">
         
@@ -658,6 +693,7 @@
     
       
       
+  
   
   
   
@@ -680,6 +716,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../storage-backends/" class="md-nav__link">
         
@@ -696,6 +733,7 @@
     
       
       
+  
   
   
   
@@ -718,6 +756,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../../getting-started/" class="md-nav__link">
         
@@ -734,6 +773,7 @@
     
       
       
+  
   
   
   
@@ -836,7 +876,7 @@
           <li class="md-nav__item">
   <a href="#cpu_detection" class="md-nav__link">
     <span class="md-ellipsis">
-      CPU detection via archspec
+      CPU detection via archspec or archdetect
     </span>
   </a>
   
@@ -882,7 +922,7 @@
 <h1 id="high-level-design-of-eessi">High-level design of EESSI<a class="headerlink" href="#high-level-design-of-eessi" title="Permanent link">&para;</a></h1>
 <p>The design of EESSI is very similar to that of the <a href="../inspiration/">Compute Canada software stack</a> it is inspired by,
 and is aligned with the <a href="../motivation-goals/">motivation and goals</a> of the project.</p>
-<p>In this remainder of this section of the tutorial, we will <strong>explore the structure of the EESSI CernVM-FS repository</strong>,
+<p>In the remainder of this section of the tutorial, we will <strong>explore the layered structure of the EESSI software stack</strong>,
 and <a href="../using-eessi/">how to use it</a>.</p>
 <p>In the <a href="../../access/">next section</a> will cover in detail how you can get access to EESSI
 (and other publicly available CernVM-FS repositories).</p>
@@ -972,15 +1012,14 @@ for managing (scientific) software stacks on High-Performance Computing (HPC) sy
 files</em></a>.
 These files, which are essentially small Lua scripts, are consumed via <a href="https://lmod.readthedocs.io"><strong>Lmod</strong></a>,
 a modern implementation of the concept of environment modules which provides a user-friendly interface to end users of EESSI.</p>
-<h4 id="cpu_detection">CPU detection via archspec<a class="headerlink" href="#cpu_detection" title="Permanent link">&para;</a></h4>
-<p>The <a href="https://archspec.readthedocs.io"><strong><code>archspec</code></strong></a> Python library is leveraged by
-an initialisation script that is included in the EESSI repository to detect the CPU family and microarchitecture of
-a client system. Based on the supported CPU features, the EESSI initialisation
+<h4 id="cpu_detection">CPU detection via <code>archspec</code> or <code>archdetect</code><a class="headerlink" href="#cpu_detection" title="Permanent link">&para;</a></h4>
+<p>The initialisation script that is included in the EESSI repository automatically detects the CPU family and
+microarchitecture of a client system by leveraging either <a href="https://archspec.readthedocs.io"><strong><code>archspec</code></strong></a>, a small
+Python library, or <code>archdetect</code>, a minimal pure bash implementation of the same concept.</p>
+<p>Based on the features of the detected CPU microarchitecture, the EESSI initialisation
 script will <strong>automatically select the best suited subdirectory</strong> of the software layer that contains
 software installations that are optimised for that particular type of CPU, and update the session environment
 to start using it.</p>
-<p>A more lightweight pure bash alternative to <code>archspec</code> named <code>archdetect</code> is being evaluated
-to become part of the initialisation procedure (and replace <code>archspec</code>).</p>
 <h4 id="software_layer_structure">Structure of the software layer<a class="headerlink" href="#software_layer_structure" title="Permanent link">&para;</a></h4>
 <p>For now, we just briefly show the structure of <code>software</code> subdirectory that contains the software layer
 of a particular version of EESSI below.</p>
@@ -1038,7 +1077,8 @@ $ ls software/linux/x86_64/amd/zen3/modules/all/OpenBLAS
 <p>Each of the other subdirectories for specific CPU microarchitectures will have the exact same structure,
 and provide the same software installations and accompanying environment module files to access them with Lmod.</p>
 <p>A key aspect here is that binaries and libraries that make part of the software installations
-included in the EESSI software layer only rely on libraries provided by the compatibility layer.</p>
+included in the EESSI software layer only rely on libraries provided by the compatibility layer and/or
+other software installations in the EESSI software layer.</p>
 <p>See for example libraries to which the OpenBLAS library links:</p>
 <div class="highlight"><pre><span></span><code>$ ldd software/linux/x86_64/amd/zen3/software/OpenBLAS/0.3.23-GCC-12.3.0/lib/libopenblas.so
     linux-vdso.so.1 (0x00007ffd4373d000)
@@ -1071,7 +1111,7 @@ when we demonstrate how to use the software installations provided in the EESSI 
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 25, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 27, 2023</span>
       
     
   </small>
@@ -1117,7 +1157,7 @@ when we demonstrate how to use the software installations provided in the EESSI 
     <script id="__config" type="application/json">{"base": "../..", "features": ["instant"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
     
   </body>

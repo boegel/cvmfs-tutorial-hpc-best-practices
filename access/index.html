@@ -9,18 +9,18 @@
       
       
       
-        <link rel="prev" href="../eessi/using-eessi/">
+        <link rel="prev" href="../eessi/support/">
       
       
         <link rel="next" href="../configuration/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
-        <title>Accessing a repository - Best Practices for CernVM-FS in HPC</title>
+        <title>Accessing repositories - Best Practices for CernVM-FS in HPC</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#accessing-a-cernvm-fs-repository" class="md-skip">
+        <a href="#accessing-cernvm-fs-repositories" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accessing a repository
+              Accessing repositories
             
           </span>
         </div>
@@ -213,6 +213,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
         
@@ -229,6 +230,7 @@
     
       
       
+  
   
   
   
@@ -268,6 +270,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../cvmfs/what-is-cvmfs/" class="md-nav__link">
         
@@ -288,6 +291,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../cvmfs/technical-details/" class="md-nav__link">
         
@@ -305,6 +309,7 @@
             
               
                 
+  
   
   
   
@@ -332,6 +337,7 @@
     
       
       
+  
   
   
   
@@ -371,6 +377,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../eessi/what-is-eessi/" class="md-nav__link">
         
@@ -388,6 +395,7 @@
             
               
                 
+  
   
   
   
@@ -411,6 +419,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../eessi/inspiration/" class="md-nav__link">
         
@@ -428,6 +437,7 @@
             
               
                 
+  
   
   
   
@@ -451,12 +461,34 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../eessi/using-eessi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Using EESSI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eessi/support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting support
   </span>
   
 
@@ -480,6 +512,7 @@
     
   
   
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -492,7 +525,7 @@
           
   
   <span class="md-ellipsis">
-    Accessing a repository
+    Accessing repositories
   </span>
   
 
@@ -503,7 +536,7 @@
         
   
   <span class="md-ellipsis">
-    Accessing a repository
+    Accessing repositories
   </span>
   
 
@@ -525,27 +558,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#client-configuration" class="md-nav__link">
+  <a href="#setting-up-a-client-system" class="md-nav__link">
     <span class="md-ellipsis">
-      Client configuration
+      Setting up a client system
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up a client system">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-cernvm-fs-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing CernVM-FS client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-client-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom client configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional repositories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-proxy-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up a proxy server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#squid-proxy" class="md-nav__link">
+  <a href="#setting-up-a-replica-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Squid proxy
+      Setting up a replica server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stratum-1-replicate-server" class="md-nav__link">
+  <a href="#alternative-ways-to-access-cernvm-fs-repositories" class="md-nav__link">
     <span class="md-ellipsis">
-      Stratum-1 replicate server
+      Alternative ways to access CernVM-FS repositories
     </span>
   </a>
   
@@ -561,6 +645,7 @@
     
       
       
+  
   
   
   
@@ -583,6 +668,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../troubleshooting/" class="md-nav__link">
         
@@ -599,6 +685,7 @@
     
       
       
+  
   
   
   
@@ -621,6 +708,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../storage-backends/" class="md-nav__link">
         
@@ -637,6 +725,7 @@
     
       
       
+  
   
   
   
@@ -659,6 +748,7 @@
   
   
   
+  
     <li class="md-nav__item">
       <a href="../getting-started/" class="md-nav__link">
         
@@ -675,6 +765,7 @@
     
       
       
+  
   
   
   
@@ -719,27 +810,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#client-configuration" class="md-nav__link">
+  <a href="#setting-up-a-client-system" class="md-nav__link">
     <span class="md-ellipsis">
-      Client configuration
+      Setting up a client system
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up a client system">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-cernvm-fs-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing CernVM-FS client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-client-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom client configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional repositories
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-proxy-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up a proxy server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#squid-proxy" class="md-nav__link">
+  <a href="#setting-up-a-replica-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Squid proxy
+      Setting up a replica server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stratum-1-replicate-server" class="md-nav__link">
+  <a href="#alternative-ways-to-access-cernvm-fs-repositories" class="md-nav__link">
     <span class="md-ellipsis">
-      Stratum-1 replicate server
+      Alternative ways to access CernVM-FS repositories
     </span>
   </a>
   
@@ -763,11 +905,55 @@
   
 
 
-<h1 id="accessing-a-cernvm-fs-repository">Accessing a CernVM-FS repository<a class="headerlink" href="#accessing-a-cernvm-fs-repository" title="Permanent link">&para;</a></h1>
-<h2 id="client-configuration">Client configuration<a class="headerlink" href="#client-configuration" title="Permanent link">&para;</a></h2>
+<h1 id="accessing-cernvm-fs-repositories">Accessing CernVM-FS repositories<a class="headerlink" href="#accessing-cernvm-fs-repositories" title="Permanent link">&para;</a></h1>
+<h2 id="setting-up-a-client-system">Setting up a client system<a class="headerlink" href="#setting-up-a-client-system" title="Permanent link">&para;</a></h2>
+<h3 id="installing-cernvm-fs-client">Installing CernVM-FS client<a class="headerlink" href="#installing-cernvm-fs-client" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">For RHEL-based Linux distros (incl. CentOS, Rocky, Fedora, ...)</label><label for="__tabbed_1_2">For Debian-based Linux distros (incl. Ubuntu)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="copy highlight"><pre><span></span><code><span class="c1"># install cvmfs-release package to add yum repository</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm
+
+<span class="c1"># install CernVM-FS client package</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cvmfs
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="copy highlight"><pre><span></span><code><span class="c1"># install cvmfs-release package to add apt repository</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>lsb-release
+curl<span class="w"> </span>-OL<span class="w"> </span>https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cvmfs-release-latest_all.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+
+<span class="c1"># install CernVM-FS client package</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cvmfs
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>FIXME from source?</p>
+<h3 id="default-configuration">Default configuration<a class="headerlink" href="#default-configuration" title="Permanent link">&para;</a></h3>
+<p><code>/cvmfs/cvmfs-config.cern.ch</code> default configuration repository</p>
+<p>includes <a href="../cvmfs/flagship-repositories/">flagship repositories</a></p>
+<div class="highlight"><pre><span></span><code>cvmfs_config showconfig software.eessi.io
+</code></pre></div>
+<h3 id="custom-client-configuration">Custom client configuration<a class="headerlink" href="#custom-client-configuration" title="Permanent link">&para;</a></h3>
 <p>(minimal requirement)</p>
-<h2 id="squid-proxy">Squid proxy<a class="headerlink" href="#squid-proxy" title="Permanent link">&para;</a></h2>
-<h2 id="stratum-1-replicate-server">Stratum-1 replicate server<a class="headerlink" href="#stratum-1-replicate-server" title="Permanent link">&para;</a></h2>
+<div class="copy highlight"><pre><span></span><code><span class="c1"># Create custom client configuration file for CernVM-FS</span>
+<span class="c1"># (no squid proxy, 10GB local cache for CernVM-FS)</span>
+sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo &#39;CVMFS_CLIENT_PROFILE=&quot;</span>single<span class="s2">&quot;&#39; &gt; /etc/cvmfs/default.local&quot;</span>
+sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo &#39;CVMFS_QUOTA_LIMIT=10000&#39; &gt;&gt; /etc/cvmfs/default.local&quot;</span>
+</code></pre></div>
+<h3 id="additional-repositories">Additional repositories<a class="headerlink" href="#additional-repositories" title="Permanent link">&para;</a></h3>
+<p>To access additional CernVM-FS repositories for which the configuration is not included in the default CernVM-FS
+configuration repository, you will need to install additional configuration files in <code>/etc/cvmfs</code>:</p>
+<ul>
+<li><code>keys</code></li>
+<li><code>domain</code> or <code>repo</code> configuration</li>
+</ul>
+<h2 id="setting-up-a-proxy-server">Setting up a proxy server<a class="headerlink" href="#setting-up-a-proxy-server" title="Permanent link">&para;</a></h2>
+<h2 id="setting-up-a-replica-server">Setting up a replica server<a class="headerlink" href="#setting-up-a-replica-server" title="Permanent link">&para;</a></h2>
+<h2 id="alternative-ways-to-access-cernvm-fs-repositories">Alternative ways to access CernVM-FS repositories<a class="headerlink" href="#alternative-ways-to-access-cernvm-fs-repositories" title="Permanent link">&para;</a></h2>
 <p>(private)</p>
 
   <hr>
@@ -775,7 +961,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 20, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2023</span>
       
     
   </small>
@@ -821,7 +1007,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      <script src="../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
     
   </body>
