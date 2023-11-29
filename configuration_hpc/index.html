@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../access/stratum1/">
+      
+      
+        <link rel="next" href="../troubleshooting/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>Accessing CernVM-FS repositories - Best Practices for CernVM-FS in HPC</title>
+        <title>Configuration on HPC systems - Best Practices for CernVM-FS in HPC</title>
       
     
     
@@ -63,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#accessing-cernvm-fs-repositories" class="md-skip">
+        <a href="#configuring-cernvm-fs-on-hpc-infrastructure" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Accessing CernVM-FS repositories
+              Configuration on HPC systems
             
           </span>
         </div>
@@ -545,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="client/" class="md-nav__link">
+      <a href="../access/client/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -566,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="proxy/" class="md-nav__link">
+      <a href="../access/proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -587,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="stratum1/" class="md-nav__link">
+      <a href="../access/stratum1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -612,10 +616,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../configuration_hpc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configuration on HPC systems
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -624,6 +648,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diskless-workernodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diskless workernodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offline-workernodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline workernodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alien-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alien cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syncing-a-cernvm-fs-repository-to-another-filesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syncing a CernVM-FS repository to another filesystem
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -768,6 +857,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diskless-workernodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diskless workernodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offline-workernodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline workernodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alien-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alien cache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#syncing-a-cernvm-fs-repository-to-another-filesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Syncing a CernVM-FS repository to another filesystem
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -784,13 +926,12 @@
   
 
 
-<h1 id="accessing-cernvm-fs-repositories">Accessing CernVM-FS repositories<a class="headerlink" href="#accessing-cernvm-fs-repositories" title="Permanent link">&para;</a></h1>
-<ul>
-<li><a href="client/">Setting up a CernVM-FS client system</a></li>
-<li><a href="proxy/">Setting up a proxy server</a></li>
-<li><a href="stratum1/">Setting up a Stratum 1 replica server</a></li>
-<li><a href="alternatives/">Alternative ways to access CernVM-FS repositories</a></li>
-</ul>
+<h1 id="configuring-cernvm-fs-on-hpc-infrastructure">Configuring CernVM-FS on HPC infrastructure<a class="headerlink" href="#configuring-cernvm-fs-on-hpc-infrastructure" title="Permanent link">&para;</a></h1>
+<h2 id="diskless-workernodes">Diskless workernodes<a class="headerlink" href="#diskless-workernodes" title="Permanent link">&para;</a></h2>
+<h2 id="offline-workernodes">Offline workernodes<a class="headerlink" href="#offline-workernodes" title="Permanent link">&para;</a></h2>
+<h2 id="alien-cache">Alien cache<a class="headerlink" href="#alien-cache" title="Permanent link">&para;</a></h2>
+<h2 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h2>
+<h2 id="syncing-a-cernvm-fs-repository-to-another-filesystem">Syncing a CernVM-FS repository to another filesystem<a class="headerlink" href="#syncing-a-cernvm-fs-repository-to-another-filesystem" title="Permanent link">&para;</a></h2>
 
   <hr>
 <div class="md-source-file">

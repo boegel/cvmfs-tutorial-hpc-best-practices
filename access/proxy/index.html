@@ -9,22 +9,22 @@
       
       
       
-        <link rel="prev" href="../access/">
+        <link rel="prev" href="../client/">
       
       
-        <link rel="next" href="../troubleshooting/">
+        <link rel="next" href="../stratum1/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
-        <title>Configuration on HPC systems - Best Practices for CernVM-FS in HPC</title>
+        <title>Setting up a proxy server - Best Practices for CernVM-FS in HPC</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
       
       
 
@@ -43,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-cernvm-fs-on-hpc-infrastructure" class="md-skip">
+        <a href="#setting-up-a-proxy-server" class="md-skip">
           Skip to content
         </a>
       
@@ -83,9 +83,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Best Practices for CernVM-FS in HPC" class="md-header__button md-logo" aria-label="Best Practices for CernVM-FS in HPC" data-md-component="logo">
+    <a href="../.." title="Best Practices for CernVM-FS in HPC" class="md-header__button md-logo" aria-label="Best Practices for CernVM-FS in HPC" data-md-component="logo">
       
-  <img src="../img/logos/cvmfs_logo.png" alt="logo">
+  <img src="../../img/logos/cvmfs_logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuration on HPC systems
+              Setting up a proxy server
             
           </span>
         </div>
@@ -186,9 +186,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Best Practices for CernVM-FS in HPC" class="md-nav__button md-logo" aria-label="Best Practices for CernVM-FS in HPC" data-md-component="logo">
+    <a href="../.." title="Best Practices for CernVM-FS in HPC" class="md-nav__button md-logo" aria-label="Best Practices for CernVM-FS in HPC" data-md-component="logo">
       
-  <img src="../img/logos/cvmfs_logo.png" alt="logo">
+  <img src="../../img/logos/cvmfs_logo.png" alt="logo">
 
     </a>
     Best Practices for CernVM-FS in HPC
@@ -215,7 +215,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -272,7 +272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cvmfs/what-is-cvmfs/" class="md-nav__link">
+      <a href="../../cvmfs/what-is-cvmfs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -293,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cvmfs/technical-details/" class="md-nav__link">
+      <a href="../../cvmfs/technical-details/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -314,7 +314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cvmfs/flagship-repositories/" class="md-nav__link">
+      <a href="../../cvmfs/flagship-repositories/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -379,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eessi/what-is-eessi/" class="md-nav__link">
+      <a href="../../eessi/what-is-eessi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -400,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eessi/motivation-goals/" class="md-nav__link">
+      <a href="../../eessi/motivation-goals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -421,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eessi/inspiration/" class="md-nav__link">
+      <a href="../../eessi/inspiration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eessi/high-level-design/" class="md-nav__link">
+      <a href="../../eessi/high-level-design/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -463,7 +463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eessi/using-eessi/" class="md-nav__link">
+      <a href="../../eessi/using-eessi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -484,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eessi/support/" class="md-nav__link">
+      <a href="../../eessi/support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -509,14 +509,53 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../access/" class="md-nav__link">
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
         
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Accessing repositories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Accessing repositories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../client/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up a client system
   </span>
   
 
@@ -524,9 +563,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
     
@@ -545,7 +585,7 @@
           
   
   <span class="md-ellipsis">
-    Configuration on HPC systems
+    Setting up a proxy server
   </span>
   
 
@@ -556,7 +596,7 @@
         
   
   <span class="md-ellipsis">
-    Configuration on HPC systems
+    Setting up a proxy server
   </span>
   
 
@@ -578,45 +618,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diskless-workernodes" class="md-nav__link">
+  <a href="#general-recommendations" class="md-nav__link">
     <span class="md-ellipsis">
-      Diskless workernodes
+      General recommendations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#offline-workernodes" class="md-nav__link">
+  <a href="#proxy-server-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Offline workernodes
+      Proxy server setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy server setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#alien-cache" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Alien cache
+      Configuration
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#security" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#starting-the-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Security
+      Starting the service
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#syncing-a-cernvm-fs-repository-to-another-filesystem" class="md-nav__link">
+  <a href="#client-system-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Syncing a CernVM-FS repository to another filesystem
+      Client system configuration
     </span>
   </a>
   
@@ -629,6 +684,35 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stratum1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up a replica server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -637,7 +721,27 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../configuration_hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration on HPC systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -657,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../performance/" class="md-nav__link">
+      <a href="../../performance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -677,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage-backends/" class="md-nav__link">
+      <a href="../../storage-backends/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -697,7 +801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containers/" class="md-nav__link">
+      <a href="../../containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -717,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -737,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../appendix/terminology/" class="md-nav__link">
+      <a href="../../appendix/terminology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,45 +881,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#diskless-workernodes" class="md-nav__link">
+  <a href="#general-recommendations" class="md-nav__link">
     <span class="md-ellipsis">
-      Diskless workernodes
+      General recommendations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#offline-workernodes" class="md-nav__link">
+  <a href="#proxy-server-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Offline workernodes
+      Proxy server setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy server setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#alien-cache" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Alien cache
+      Configuration
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#security" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#starting-the-service" class="md-nav__link">
     <span class="md-ellipsis">
-      Security
+      Starting the service
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#syncing-a-cernvm-fs-repository-to-another-filesystem" class="md-nav__link">
+  <a href="#client-system-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Syncing a CernVM-FS repository to another filesystem
+      Client system configuration
     </span>
   </a>
   
@@ -839,19 +958,119 @@
   
 
 
-<h1 id="configuring-cernvm-fs-on-hpc-infrastructure">Configuring CernVM-FS on HPC infrastructure<a class="headerlink" href="#configuring-cernvm-fs-on-hpc-infrastructure" title="Permanent link">&para;</a></h1>
-<h2 id="diskless-workernodes">Diskless workernodes<a class="headerlink" href="#diskless-workernodes" title="Permanent link">&para;</a></h2>
-<h2 id="offline-workernodes">Offline workernodes<a class="headerlink" href="#offline-workernodes" title="Permanent link">&para;</a></h2>
-<h2 id="alien-cache">Alien cache<a class="headerlink" href="#alien-cache" title="Permanent link">&para;</a></h2>
-<h2 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h2>
-<h2 id="syncing-a-cernvm-fs-repository-to-another-filesystem">Syncing a CernVM-FS repository to another filesystem<a class="headerlink" href="#syncing-a-cernvm-fs-repository-to-another-filesystem" title="Permanent link">&para;</a></h2>
+<h1 id="setting-up-a-proxy-server">Setting up a proxy server<a class="headerlink" href="#setting-up-a-proxy-server" title="Permanent link">&para;</a></h1>
+<p>As a first step towards a production-ready CernVM-FS setup
+we will install a <a href="http://www.squid-cache.org">Squid forward proxy server</a>,
+which is strongly recommended in the context of HPC systems.</p>
+<p>The proxy server will (often dramatically) <strong>reduce the latency</strong> for client systems,
+and hence <strong>significantly improve start-up performance</strong> of software provided via a CernVM-FS
+repository. In addition, it reduces the load on the Stratum 1 replica servers that
+support the CernVM-FS repositories being used.</p>
+<p>This is particularly important when running large-scale <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a>
+software, since starting the software requires that the corresponding binary and the libraries
+it depends on are available on <em>all</em> worker nodes being employed.</p>
+<h2 id="general-recommendations">General recommendations<a class="headerlink" href="#general-recommendations" title="Permanent link">&para;</a></h2>
+<p>It is strongly recommended to have <strong>at least two proxy servers</strong> available,
+to have some redundancy available in case of unexpected problems or when performance maintenance.</p>
+<p>As a rule of thumb, it is recommended to have (at least) <em>one proxy server for every couple
+of hundred worker nodes</em> (100-500).</p>
+<p>The load on the proxy servers is highly dependent on the workload mix on the client systems.</p>
+<h2 id="proxy-server-setup">Proxy server setup<a class="headerlink" href="#proxy-server-setup" title="Permanent link">&para;</a></h2>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<p>First, install the <code>squid</code> package using your OS package manager:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">For RHEL-based Linux distros (incl. CentOS, Rocky, Fedora, ...)</label><label for="__tabbed_1_2">For Debian-based Linux distros (incl. Ubuntu)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>squid
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>squid
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>Create a configuration file for the Squid proxy in <code>/etc/squid/squid.conf</code>.</p>
+<p>You can use the following template for this:</p>
+<div class="copy highlight"><pre><span></span><code><span class="c"># List of local IP addresses (separate IPs and/or CIDR notation) allowed to access your local proxy</span>
+<span class="nb">acl</span><span class="w"> </span>local_nodes<span class="w"> </span>src<span class="w"> </span>YOUR_CLIENT_IPS
+
+<span class="c"># Destination domains that are allowed</span>
+<span class="c">#acl stratum_ones dstdomain .YOURDOMAIN.ORG</span>
+<span class="c">#acl stratum_ones dstdom_regex YOUR_REGEX</span>
+
+<span class="c"># Squid port</span>
+<span class="nb">http_port</span><span class="w"> </span><span class="m">3128</span>
+
+<span class="c"># Deny access to anything which is not part of our stratum_ones ACL.</span>
+<span class="nb">http_access</span><span class="w"> </span>deny<span class="w"> </span>!stratum_ones
+
+<span class="c"># Only allow access from our local machines</span>
+<span class="nb">http_access</span><span class="w"> </span>allow<span class="w"> </span>local_nodes
+<span class="nb">http_access</span><span class="w"> </span>allow<span class="w"> </span>localhost
+
+<span class="c"># Finally, deny all other access to this proxy</span>
+<span class="nb">http_access</span><span class="w"> </span>deny<span class="w"> </span><span class="k">all</span>
+
+<span class="nb">minimum_expiry_time</span><span class="w"> </span><span class="m">0</span>
+<span class="nb">maximum_object_size</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span>MB
+
+<span class="c"># proxy memory cache of 1GB</span>
+<span class="nb">cache_mem</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span>MB
+<span class="nb">maximum_object_size_in_memory</span><span class="w"> </span><span class="m">128</span><span class="w"> </span>KB
+<span class="c"># 50 GB disk cache</span>
+<span class="nb">cache_dir</span><span class="w"> </span>ufs<span class="w"> </span><span class="sx">/var/spool/squid</span><span class="w"> </span><span class="m">50000</span><span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">256</span>
+</code></pre></div>
+<p>In this template, you <em>must</em> change two things in the Access Control List (ACL) settings:</p>
+<p>1) Specify which client systems can access your proxy by replacing "<code>YOUR_CLIENT_IPS</code>" with the corresponding IP range, using <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">CIDR notation</a>;</p>
+<p>2) Make sure that Squid allows access to all Stratum 1 replica servers that are relevant for the CernVM-FS repositories
+   you are using, by specifying an ACL for each of them via a line that starts with "<code>acl stratum_ones</code>"
+   (see also the <a href="http://www.squid-cache.org/Doc/config/acl/">Squid ACL documentation</a>).</p>
+<p>For example, to allow the EESSI Stratum 1 replica servers, you can use:</p>
+<div class="copy highlight"><pre><span></span><code><span class="nb">acl</span><span class="w"> </span>stratum_ones<span class="w"> </span>dstdomain<span class="w"> </span>.eessi.science
+</code></pre></div>
+<p>To check your Squid configuration, use:</p>
+<div class="copy highlight"><pre><span></span><code>squid<span class="w"> </span>-k<span class="w"> </span>parse
+</code></pre></div>
+<p>If no warnings or errors are printed by this command, you should be all set (provided that the ACLs are set correctly).</p>
+<p>For more information on configuring a Squid proxy, <a href="https://cvmfs.readthedocs.io/en/stable/cpt-squid.html">see the CernVM-FS documentation</a>,</p>
+<h3 id="starting-the-service">Starting the service<a class="headerlink" href="#starting-the-service" title="Permanent link">&para;</a></h3>
+<p>To start the Squid and enable it on booting the proxy server, run:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>squid
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>squid
+</code></pre></div>
+<p>To check the status of the Squid, you can use:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>squid
+</code></pre></div>
+<h2 id="client-system-configuration">Client system configuration<a class="headerlink" href="#client-system-configuration" title="Permanent link">&para;</a></h2>
+<p>To make a CernVM-FS client system use the proxy server,
+the <code>/etc/cvmfs/default.local</code> configuration file <em>on the client system</em> should be updated to include:</p>
+<div class="copy highlight"><pre><span></span><code><span class="na">CVMFS_HTTP_PROXY</span><span class="o">=</span><span class="s">&quot;http://&lt;PROXY_IP&gt;:3128&quot;</span>
+</code></pre></div>
+<p>in which "<code>&lt;PROXY_IP&gt;</code>" is replaced with the IP address or hostname of the proxy server.</p>
+<p>To apply the change we need to reload the CernVM-FS configuration:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>reload
+</code></pre></div>
+<p>You can test the new configuration and verify whether the proxy is indeed being used
+via <code>cvmfs_config stat</code>:</p>
+<div class="copy highlight"><pre><span></span><code>ls<span class="w"> </span>/cvmfs/software.eessi.io
+cvmfs_config<span class="w"> </span>stat<span class="w"> </span>-v<span class="w"> </span>software.eessi.io
+</code></pre></div>
+<p>Here we fist inspect the contents of the repository using <code>ls</code> to make sure that the repository is mounted,
+which is assumed by <code>cvmfs_config stat</code>.</p>
+<p>The output of the <code>stat</code> command should include a link like this:</p>
+<div class="highlight"><pre><span></span><code>Connection: .../software.eessi.io through proxy http://&lt;PROXY_IP&gt;:3128 (online)
+</code></pre></div>
+<hr />
+<p><em>(next: <a href="../stratum1/">Setting up a Stratum 1 replica server</a>)</em></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 24, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2023</span>
       
     
   </small>
@@ -894,10 +1113,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["instant"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["instant"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
     
   </body>
