@@ -677,6 +677,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cleanup_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup to prepare for Stratum 1
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -698,6 +707,27 @@
   
   <span class="md-ellipsis">
     Private Stratum 1 replica server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alternatives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alternative access methods
   </span>
   
 
@@ -940,6 +970,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cleanup_proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cleanup to prepare for Stratum 1
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -970,6 +1009,9 @@ support the repositories being used.</p>
 software, since the software binary and all the libraries it requires must be available on <em>all</em> worker nodes being
 employed before the software can start running.</p>
 <h2 id="general-recommendations">General recommendations<a class="headerlink" href="#general-recommendations" title="Permanent link">&para;</a></h2>
+<p>The proxy server should have a 10Gbit link to the client systems,
+a sufficiently powerful CPU, a decent amount of memory for the kernel cache (tens of GBs),
+and fast local storage (SSD or NVMe).</p>
 <p>It is strongly recommended to have <strong>at least two proxy servers</strong> available,
 to have some redundancy available in case of unexpected problems, or during a maintenance window.</p>
 <p>As a rule of thumb, it is recommended to have (at least) <em>one proxy server for every couple
@@ -997,8 +1039,7 @@ of hundred worker nodes</em> (100-500).</p>
 <span class="nb">acl</span><span class="w"> </span>local_nodes<span class="w"> </span>src<span class="w"> </span>YOUR_CLIENT_IPS
 
 <span class="c"># Destination domains that are allowed</span>
-<span class="c">#acl stratum_ones dstdomain .YOURDOMAIN.ORG</span>
-<span class="c">#acl stratum_ones dstdom_regex YOUR_REGEX</span>
+<span class="nb">acl</span><span class="w"> </span>stratum_ones<span class="w"> </span>dstdomain<span class="w"> </span>.YOURDOMAIN.ORG
 
 <span class="c"># Squid port</span>
 <span class="nb">http_port</span><span class="w"> </span><span class="m">3128</span>
@@ -1025,11 +1066,12 @@ of hundred worker nodes</em> (100-500).</p>
 <p>In this template, you <em>must</em> change two things in the Access Control List (ACL) settings:</p>
 <p>1) Specify which client systems can access your proxy by replacing "<code>YOUR_CLIENT_IPS</code>" with the corresponding IP range, using <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">CIDR notation</a>;</p>
 <p>2) Make sure that the proxy server allows access to the Stratum 1 replica servers that are relevant for the CernVM-FS repositories
-   you are using, by specifying an ACL for each of them via a line that starts with "<code>acl stratum_ones</code>"
+   you are using, by replacing "<code>.YOURDOMAIN.ORG</code>" with domain name for the Stratum 1 replica servers
    (see also the <a href="http://www.squid-cache.org/Doc/config/acl/">Squid ACL documentation</a>).</p>
-<p>For example, to allow the EESSI Stratum 1 replica servers, you can use:</p>
+<p>For example, to allow connecting to the EESSI Stratum 1 replica servers, use:</p>
 <div class="copy highlight"><pre><span></span><code><span class="nb">acl</span><span class="w"> </span>stratum_ones<span class="w"> </span>dstdomain<span class="w"> </span>.eessi.science
 </code></pre></div>
+<p>Note that this configuration assumes that port 3128 is accessible on the proxy server.</p>
 <p>To check your Squid configuration, use:</p>
 <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>squid<span class="w"> </span>-k<span class="w"> </span>parse
 </code></pre></div>
@@ -1046,9 +1088,9 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h2 id="client-system-configuration">Client system configuration<a class="headerlink" href="#client-system-configuration" title="Permanent link">&para;</a></h2>
 <p>To make a CernVM-FS client system use the proxy server,
 the <code>/etc/cvmfs/default.local</code> configuration file <em>on the client system</em> should be updated to include:</p>
-<div class="copy highlight"><pre><span></span><code><span class="na">CVMFS_HTTP_PROXY</span><span class="o">=</span><span class="s">&quot;http://&lt;PROXY_IP&gt;:3128&quot;</span>
+<div class="copy highlight"><pre><span></span><code><span class="c1"># replace PROXY_IP with the IP address of the proxy server</span>
+<span class="na">CVMFS_HTTP_PROXY</span><span class="o">=</span><span class="s">&quot;http://PROXY_IP:3128&quot;</span>
 </code></pre></div>
-<p>in which "<code>&lt;PROXY_IP&gt;</code>" is replaced with the IP address or hostname of the proxy server.</p>
 <p>To apply the change we need to reload the CernVM-FS configuration on the client system:</p>
 <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>reload
 </code></pre></div>
@@ -1057,11 +1099,34 @@ by the client system via <code>cvmfs_config stat</code>:</p>
 <div class="copy highlight"><pre><span></span><code>ls<span class="w"> </span>/cvmfs/software.eessi.io
 cvmfs_config<span class="w"> </span>stat<span class="w"> </span>-v<span class="w"> </span>software.eessi.io
 </code></pre></div>
-<p>Here we fist inspect the contents of the repository using <code>ls</code> to make sure that the repository is mounted,
+<p>We first inspect the contents of the repository using <code>ls</code> to make sure that the repository is mounted,
 which is assumed by <code>cvmfs_config stat</code>.</p>
-<p>The output of the <code>stat</code> command should include a link like this:</p>
-<div class="highlight"><pre><span></span><code>Connection: .../software.eessi.io through proxy http://&lt;PROXY_IP&gt;:3128 (online)
+<p>The output of the <code>stat</code> command should look something like this:</p>
+<p>Note the <code>Connection</code> line, which clearly shows that the proxy server is used (and is working):</p>
+<div class="highlight"><pre><span></span><code>Connection: .../software.eessi.io through proxy http://PROXY_IP:3128 (online)
 </code></pre></div>
+<p>To check whether the proxy is working as intended you can use <code>curl</code> to try to access
+the <code>.cvmfspublished</code> file in the root of the repository on a Stratum 1, for example:</p>
+<div class="copy highlight"><pre><span></span><code><span class="c1"># replace PROXY_IP with the IP address of the proxy server</span>
+<span class="nv">http_proxy</span><span class="o">=</span>http://PROXY_IP:3128<span class="w"> </span>curl<span class="w"> </span>--head<span class="w"> </span>http://aws-eu-central-s1.eessi.science/cvmfs/software.eessi.io/.cvmfspublished
+</code></pre></div>
+<p>The first output line of this command should be:</p>
+<div class="highlight"><pre><span></span><code>HTTP/1.1 200 OK
+</code></pre></div>
+<h2 id="cleanup_proxy">Cleanup to prepare for Stratum 1<a class="headerlink" href="#cleanup_proxy" title="Permanent link">&para;</a></h2>
+<p>To prepare for the next tutorial section on <a href="../stratum1/">setting up a private Stratum 1 replica server</a>,
+comment out the <code>CVMFS_HTTP_PROXY</code> line in <code>/etc/cvmfs/default.local</code> by prefixing it with a hash (<code>#</code>):</p>
+<div class="copy highlight"><pre><span></span><code><span class="c1">#CVMFS_HTTP_PROXY=&quot;http://PROXY_IP:3128&quot;</span>
+</code></pre></div>
+<p>The full contents of <code>/etc/cvmfs/default.local</code> on the client system should again be as shown below, like it was initially created when
+<a href="../client/##minimal_configuration">configuring the client</a>:</p>
+<div class="copy highlight"><pre><span></span><code><span class="na">CVMFS_CLIENT_PROFILE</span><span class="o">=</span><span class="s">&quot;single&quot;</span>
+<span class="na">CVMFS_QUOTA_LIMIT</span><span class="o">=</span><span class="s">10000</span>
+</code></pre></div>
+<p>Do not forget to also reload the CernVM-FS client configuration:
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>reload
+</code></pre></div></p>
+<p>We will later reconfigure the proxy server so it can be used together with our private Stratum 1.</p>
 <hr />
 <p><em>(next: <a href="../stratum1/">Setting up a Stratum 1 replica server</a>)</em></p>
 

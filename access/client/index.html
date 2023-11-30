@@ -649,7 +649,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#recommendations-for-autofs" class="md-nav__link">
+  <a href="#autofs" class="md-nav__link">
     <span class="md-ellipsis">
       Recommendations for autofs
     </span>
@@ -749,6 +749,27 @@
   
   <span class="md-ellipsis">
     Private Stratum 1 replica server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alternatives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Alternative access methods
   </span>
   
 
@@ -984,7 +1005,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#recommendations-for-autofs" class="md-nav__link">
+  <a href="#autofs" class="md-nav__link">
     <span class="md-ellipsis">
       Recommendations for autofs
     </span>
@@ -1121,7 +1142,7 @@ source</a>.</p>
 <p>Next to installing the CernVM-FS client, you should also create a minimal configuration file for it.</p>
 <p>This is typically done in <code>/etc/cvmfs/default.local</code>,
 which should contain something like:</p>
-<div class="copy highlight"><pre><span></span><code><span class="na">CVMFS_CLIENT_PROFILE</span><span class="o">=</span><span class="s">&quot;single&quot;</span>
+<div class="copy highlight"><pre><span></span><code><span class="na">CVMFS_CLIENT_PROFILE</span><span class="o">=</span><span class="s">&quot;single&quot;</span><span class="w"> </span><span class="c1"># a single node setup, not a cluster</span>
 <span class="na">CVMFS_QUOTA_LIMIT</span><span class="o">=</span><span class="s">10000</span>
 </code></pre></div>
 <p>More information on the structure of <code>/etc/cvmfs</code> and supported configuration settings is available
@@ -1144,46 +1165,50 @@ that no proxy server should be used by CernVM-FS:</p>
 <p>When the specified quota limit is reached, CernVM-FS will automatically remove files from the cache according
 to the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">Least Recently Used (LRU) policy</a>,
 until half of the maximum cache size has been freed.</p>
-<p>The location of the cache directory can be controlled by <code>CVMFS_CACHE_BASE</code> if needed (default: <code>/var/run/cvmfs</code>),
+<p>The location of the cache directory can be controlled by <code>CVMFS_CACHE_BASE</code> if needed (default: <code>/var/lib/cvmfs</code>),
 but <strong>must</strong> be a on a <em>local</em> file system of the client, not a network file system that can be modified by multiple
 hosts.</p>
 <p>Using a directory in a RAM disk (like <code>/dev/shm</code>) for the CernVM-FS client cache
-is possible but not recommended in general, mostly because the internal implementation
-in CernVM-FS to support this is pretty involved, and not extensively tested.</p>
+can be considered if enough memory is available in the client system, which would
+help reduce latency and start-up performance of software.</p>
 <p>For more information on cache-related configuration settings,
 <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#cache-settings">see the CernVM-FS documentation</a>.</p>
 <h2 id="completing-the-client-setup">Completing the client setup<a class="headerlink" href="#completing-the-client-setup" title="Permanent link">&para;</a></h2>
 <p>To complete the setup of the CernVM-FS client component,
-a<code>cvmfs</code> user account and group must be added to the system,
-and the <code>/cvmfs</code> and <code>/var/lib/cvmfs</code> directories must be created.</p>
+we need to make sure that a <code>cvmfs</code> service account and group are present on the system,
+and the <code>/cvmfs</code> and <code>/var/lib/cvmfs</code> directories exist with the correct ownership and permissions.</p>
+<p>This should be taken care of by the post-install script that is run when installing the <code>cvmfs</code> package,
+so you will only need to take action on these aspects if you were installing the CernVM-FS client from source.</p>
 <p>In addition, it is recommended to update the <code>autofs</code> configuration
-to enable auto-mounting of CernVM-FS repositories <em>(optional)</em>.</p>
+to enable auto-mounting of CernVM-FS repositories, and to make sure the <code>autofs</code> service is running.</p>
 <p>All these actions can be performed in one go by running the following command:</p>
 <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>setup
 </code></pre></div>
 <p>Additional options can be passed to the <code>cvmfs_config setup</code> command to disable some of the actions,
-like <code>nouser</code> to not create the <code>cvmfs</code> user and group, or <code>noautofs</code> not
+like <code>nouser</code> to not create the <code>cvmfs</code> user and group, or <code>noautofs</code> to not
 update the <code>autofs</code> configuration.</p>
-<h3 id="recommendations-for-autofs">Recommendations for <code>autofs</code><a class="headerlink" href="#recommendations-for-autofs" title="Permanent link">&para;</a></h3>
-<p>It is recommended to increase the timeout used by <code>autofs</code> for unmounting due to inactivity,
-by setting additional options in <code>/etc/sysconfig/autofs</code>, for example:</p>
-<div class="copy highlight"><pre><span></span><code><span class="na">OPTIONS</span><span class="o">=</span><span class="s">&quot;--timeout 3600&quot;</span>
+<h3 id="autofs">Recommendations for <code>autofs</code><a class="headerlink" href="#autofs" title="Permanent link">&para;</a></h3>
+<p>It is recommended to configure <code>autofs</code> to <em>never unmount</em> repositories due to inactivity,
+since that <a href="https://github.com/cvmfs/cvmfs/issues/3402">can cause problems in specific situations</a>.</p>
+<p>This can be done by setting additional options in <code>/etc/sysconfig/autofs</code> (on RHEL-based Linux distributions)
+or <code>/etc/default/autofs</code> (on Debian-based distributions):</p>
+<div class="copy highlight"><pre><span></span><code><span class="na">OPTIONS</span><span class="o">=</span><span class="s">&quot;--timeout 0&quot;</span>
 </code></pre></div>
-<p>This sets the timeout for <code>autofs</code> to 1 hour (3600 seconds).</p>
-<p>The default timeout is typically 5 minutes (300 seconds), which is usually specified in <code>/etc/autofs.conf</code>.</p>
-<p>Using "<code>--timeout 0</code>" so that <code>autofs</code> never unmounts is preferable to using static mounts.</p>
+<p>The default <code>autofs</code> timeout is typically 5 minutes (300 seconds), which is usually specified in <code>/etc/autofs.conf</code>.</p>
 <h3 id="using-static-mounts">Using static mounts<a class="headerlink" href="#using-static-mounts" title="Permanent link">&para;</a></h3>
 <p>If you prefer not to use <code>autofs</code>, you will need to use static mounting, by either:</p>
 <ul>
 <li>
 <p>Manually mounting the CernVM-FS repositories you want to use, for example:
-  <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cvmfs<span class="w"> </span>software.eessi.io<span class="w"> </span>/cvmfs/software.eessi.io
+  <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/cvmfs/software.eessi.io
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cvmfs<span class="w"> </span>software.eessi.io<span class="w"> </span>/cvmfs/software.eessi.io
 </code></pre></div></p>
 </li>
 <li>
 <p>Updating <code>/etc/fstab</code> to ensure that the CernVM-FS repositories are mounted at boot time.</p>
 </li>
 </ul>
+<p><a href="#autofs">Configuring <code>autofs</code></a> to never unmount due to inactivity is preferable to using static mounts.</p>
 <p>For more information on mounting repositories,
 <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#mounting">see the CernVM-FS documentation</a>.</p>
 <h2 id="checking-client-setup">Checking client setup<a class="headerlink" href="#checking-client-setup" title="Permanent link">&para;</a></h2>
@@ -1193,7 +1218,7 @@ by setting additional options in <code>/etc/sysconfig/autofs</code>, for example
 <p>You should see <code>OK</code> as output of this command.</p>
 <h2 id="default-repositories">Default repositories<a class="headerlink" href="#default-repositories" title="Permanent link">&para;</a></h2>
 <p>The default configuration of CernVM-FS, provided by the <code>cvmfs-config-default</code>
-packages, provides the public keys and configuration for a number of
+package, provides the public keys and configuration for a number of
 commonly used CernVM-FS repositories.</p>
 <p>One particular repository included in the default CernVM-FS configuration is
 <code>cvmfs-config.cern.ch</code>, which is a <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#the-config-repository">CernVM-FS <em>config repository</em></a>
@@ -1233,7 +1258,7 @@ Seems<span class="w"> </span>like<span class="w"> </span>CernVM-FS<span class="w
 </ul>
 <p>Examples are available in the <code>etc/cvmfs</code> subdirectory of the <a href="https://github.com/cvmfs-contrib/config-repo">config-repo GitHub repository</a>.</p>
 <hr />
-<p><em>(next: <a href="../proxy/">Setting up a proxy server</a>)</em></p>
+<p><em>(next: <a href="../proxy/">Squid proxy server</a>)</em></p>
 
   <hr>
 <div class="md-source-file">
