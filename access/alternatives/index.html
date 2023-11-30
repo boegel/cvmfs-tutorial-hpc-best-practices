@@ -921,7 +921,7 @@ is recommended, there are other alternatives available for getting access to Cer
 including some that do not require system administrator permissions.</p>
 <h2 id="cvmfsexec"><code>cvmfsexec</code><a class="headerlink" href="#cvmfsexec" title="Permanent link">&para;</a></h2>
 <p>Using <a href="https://github.com/cvmfs/cvmfsexec"><code>cvmfsexec</code></a>, mounting of CernVM-FS repositories as
-an unpriviledged user is possible, without having CernVM-FS installed system-wide.</p>
+an unprivileged user is possible, without having CernVM-FS installed system-wide.</p>
 <p><code>cvmfsexec</code> supports multiple ways of doing this depending on the system configuration,
 where way requires that specific features are enabled in the system, like:</p>
 <ul>
@@ -1011,7 +1011,10 @@ to start an interactive shell in which EESSI is available, as follows:</p>
 apptainer<span class="w"> </span>shell<span class="w"> </span>--fusemount<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FUSEMOUNT_CVMFS_CONFIG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--fusemount<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FUSEMOUNT_EESSI</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>docker://ghcr.io/eessi/client-pilot:centos7
 </code></pre></div>
 <h2 id="alien-cache">Alien cache<a class="headerlink" href="#alien-cache" title="Permanent link">&para;</a></h2>
-<p><a href="../../configuration_hpc/#alien-cache">see</a></p>
+<p>An alien cache can be used, optionally in combination with preloading, as another alternative,
+typically in combination with using a container image or unprivileged user namespaces.</p>
+<p>For more information, see the <a href="../../configuration_hpc/#alien-cache">Alien cache subsection</a> in the next part of the
+tutorial.</p>
 <hr />
 <p><em>(next: <a href="../../configuration_hpc/">Configuration on HPC systems</a>)</em></p>
 
