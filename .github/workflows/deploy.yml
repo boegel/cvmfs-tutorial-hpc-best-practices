@@ -2,7 +2,7 @@
 name: deploy tutorial (only on push to main branch)
 on:
   push:
-    branches: main
+    branches: PREVIEW
 jobs:
   build:
     runs-on: ubuntu-20.04
