@@ -20,7 +20,7 @@
     
     
       
-        <title>Setting up a proxy server - Best Practices for CernVM-FS in HPC</title>
+        <title>Squid proxy server - Best Practices for CernVM-FS in HPC</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-a-proxy-server" class="md-skip">
+        <a href="#squid-proxy-server" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setting up a proxy server
+              Squid proxy server
             
           </span>
         </div>
@@ -555,7 +555,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a client system
+    CernVM-FS client system
   </span>
   
 
@@ -585,7 +585,7 @@
           
   
   <span class="md-ellipsis">
-    Setting up a proxy server
+    Squid proxy server
   </span>
   
 
@@ -596,7 +596,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a proxy server
+    Squid proxy server
   </span>
   
 
@@ -697,7 +697,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a replica server
+    Private Stratum 1 replica server
   </span>
   
 
@@ -958,23 +958,23 @@
   
 
 
-<h1 id="setting-up-a-proxy-server">Setting up a proxy server<a class="headerlink" href="#setting-up-a-proxy-server" title="Permanent link">&para;</a></h1>
+<h1 id="squid-proxy-server">Squid proxy server<a class="headerlink" href="#squid-proxy-server" title="Permanent link">&para;</a></h1>
 <p>As a first step towards a production-ready CernVM-FS setup
-we will install a <a href="http://www.squid-cache.org">Squid forward proxy server</a>,
+we can install a <a href="http://www.squid-cache.org">Squid forward proxy server</a>,
 which is strongly recommended in the context of HPC systems.</p>
-<p>The proxy server will (often dramatically) <strong>reduce the latency</strong> for client systems,
-and hence <strong>significantly improve start-up performance</strong> of software provided via a CernVM-FS
-repository. In addition, it reduces the load on the Stratum 1 replica servers that
-support the CernVM-FS repositories being used.</p>
+<p>The proxy server will (often dramatically) <strong>reduce the latency</strong> for client systems for accessing CernVM-FS repositories,
+and hence <strong>significantly improve start-up performance</strong> of software provided via CernVM-FS.
+In addition, it reduces the load on the Stratum 1 replica servers that
+support the repositories being used.</p>
 <p>This is particularly important when running large-scale <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a>
-software, since starting the software requires that the corresponding binary and the libraries
-it depends on are available on <em>all</em> worker nodes being employed.</p>
+software, since the software binary and all the libraries it requires must be available on <em>all</em> worker nodes being
+employed before the software can start running.</p>
 <h2 id="general-recommendations">General recommendations<a class="headerlink" href="#general-recommendations" title="Permanent link">&para;</a></h2>
 <p>It is strongly recommended to have <strong>at least two proxy servers</strong> available,
-to have some redundancy available in case of unexpected problems or when performance maintenance.</p>
+to have some redundancy available in case of unexpected problems, or during a maintenance window.</p>
 <p>As a rule of thumb, it is recommended to have (at least) <em>one proxy server for every couple
 of hundred worker nodes</em> (100-500).</p>
-<p>The load on the proxy servers is highly dependent on the workload mix on the client systems.</p>
+<p>Note that the load on the proxy servers used by CernVM-FS is highly dependent on the workload mix on the client systems.</p>
 <h2 id="proxy-server-setup">Proxy server setup<a class="headerlink" href="#proxy-server-setup" title="Permanent link">&para;</a></h2>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <p>First, install the <code>squid</code> package using your OS package manager:</p>
@@ -1024,16 +1024,16 @@ of hundred worker nodes</em> (100-500).</p>
 </code></pre></div>
 <p>In this template, you <em>must</em> change two things in the Access Control List (ACL) settings:</p>
 <p>1) Specify which client systems can access your proxy by replacing "<code>YOUR_CLIENT_IPS</code>" with the corresponding IP range, using <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation">CIDR notation</a>;</p>
-<p>2) Make sure that Squid allows access to all Stratum 1 replica servers that are relevant for the CernVM-FS repositories
+<p>2) Make sure that the proxy server allows access to the Stratum 1 replica servers that are relevant for the CernVM-FS repositories
    you are using, by specifying an ACL for each of them via a line that starts with "<code>acl stratum_ones</code>"
    (see also the <a href="http://www.squid-cache.org/Doc/config/acl/">Squid ACL documentation</a>).</p>
 <p>For example, to allow the EESSI Stratum 1 replica servers, you can use:</p>
 <div class="copy highlight"><pre><span></span><code><span class="nb">acl</span><span class="w"> </span>stratum_ones<span class="w"> </span>dstdomain<span class="w"> </span>.eessi.science
 </code></pre></div>
 <p>To check your Squid configuration, use:</p>
-<div class="copy highlight"><pre><span></span><code>squid<span class="w"> </span>-k<span class="w"> </span>parse
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>squid<span class="w"> </span>-k<span class="w"> </span>parse
 </code></pre></div>
-<p>If no warnings or errors are printed by this command, you should be all set (provided that the ACLs are set correctly).</p>
+<p>If no warnings or errors are printed by this command, you should be all set (assuming that the ACLs are set correctly).</p>
 <p>For more information on configuring a Squid proxy, <a href="https://cvmfs.readthedocs.io/en/stable/cpt-squid.html">see the CernVM-FS documentation</a>,</p>
 <h3 id="starting-the-service">Starting the service<a class="headerlink" href="#starting-the-service" title="Permanent link">&para;</a></h3>
 <p>To start the Squid and enable it on booting the proxy server, run:</p>
@@ -1049,11 +1049,11 @@ the <code>/etc/cvmfs/default.local</code> configuration file <em>on the client s
 <div class="copy highlight"><pre><span></span><code><span class="na">CVMFS_HTTP_PROXY</span><span class="o">=</span><span class="s">&quot;http://&lt;PROXY_IP&gt;:3128&quot;</span>
 </code></pre></div>
 <p>in which "<code>&lt;PROXY_IP&gt;</code>" is replaced with the IP address or hostname of the proxy server.</p>
-<p>To apply the change we need to reload the CernVM-FS configuration:</p>
+<p>To apply the change we need to reload the CernVM-FS configuration on the client system:</p>
 <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>reload
 </code></pre></div>
 <p>You can test the new configuration and verify whether the proxy is indeed being used
-via <code>cvmfs_config stat</code>:</p>
+by the client system via <code>cvmfs_config stat</code>:</p>
 <div class="copy highlight"><pre><span></span><code>ls<span class="w"> </span>/cvmfs/software.eessi.io
 cvmfs_config<span class="w"> </span>stat<span class="w"> </span>-v<span class="w"> </span>software.eessi.io
 </code></pre></div>
@@ -1070,7 +1070,7 @@ which is assumed by <code>cvmfs_config stat</code>.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 30, 2023</span>
       
     
   </small>

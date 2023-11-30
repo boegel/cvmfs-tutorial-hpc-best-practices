@@ -20,7 +20,7 @@
     
     
       
-        <title>Setting up a client system - Best Practices for CernVM-FS in HPC</title>
+        <title>CernVM-FS client system - Best Practices for CernVM-FS in HPC</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-a-cernvm-fs-client-system" class="md-skip">
+        <a href="#cernvm-fs-client-system" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setting up a client system
+              CernVM-FS client system
             
           </span>
         </div>
@@ -564,7 +564,7 @@
           
   
   <span class="md-ellipsis">
-    Setting up a client system
+    CernVM-FS client system
   </span>
   
 
@@ -575,7 +575,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a client system
+    CernVM-FS client system
   </span>
   
 
@@ -645,6 +645,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Completing the client setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommendations-for-autofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations for autofs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-static-mounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using static mounts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -660,6 +684,15 @@
   <a href="#default-repositories" class="md-nav__link">
     <span class="md-ellipsis">
       Default repositories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-repository-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecting repository configuration
     </span>
   </a>
   
@@ -694,7 +727,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a proxy server
+    Squid proxy server
   </span>
   
 
@@ -715,7 +748,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a replica server
+    Private Stratum 1 replica server
   </span>
   
 
@@ -947,6 +980,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Completing the client setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommendations-for-autofs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations for autofs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-static-mounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using static mounts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -962,6 +1019,15 @@
   <a href="#default-repositories" class="md-nav__link">
     <span class="md-ellipsis">
       Default repositories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspecting-repository-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecting repository configuration
     </span>
   </a>
   
@@ -994,17 +1060,17 @@
   
 
 
-<h1 id="setting-up-a-cernvm-fs-client-system">Setting up a CernVM-FS client system<a class="headerlink" href="#setting-up-a-cernvm-fs-client-system" title="Permanent link">&para;</a></h1>
+<h1 id="cernvm-fs-client-system">CernVM-FS client system<a class="headerlink" href="#cernvm-fs-client-system" title="Permanent link">&para;</a></h1>
 <p>The recommended way to gain access to CernVM-FS repositories is to set up
-a <em>system-wide native installation</em> of CernVM-FS on the client system(s),
+a <em>system-wide native installation</em> of CernVM-FS on the <a href="../../appendix/terminology/#client">client system(s)</a>,
 which comes down to:</p>
 <ul>
 <li>Installing the client component of CernVM-FS;</li>
 <li>Creating a minimal client configuration file (<code>/etc/cvmfs/default.local</code>);</li>
 <li>Completing the client setup by:<ul>
 <li>Creating a<code>cvmfs</code> user account and group;</li>
-<li>Creating the <code>/cvmfs</code>, <code>/var/lib/cvmfs</code> directories;</li>
-<li>Configuring <code>autofs</code> to enable auto-mounting of CernVM-FS repositories <em>(optional)</em>.</li>
+<li>Creating the <code>/cvmfs</code> and <code>/var/lib/cvmfs</code> directories;</li>
+<li>Configuring <code>autofs</code> to enable auto-mounting of repositories <em>(recommended)</em>.</li>
 </ul>
 </li>
 </ul>
@@ -1018,9 +1084,9 @@ this is not sufficient to obtain a production-ready setup.</p>
 <p>This is especially true on HPC infrastructure that typically consists of a
 large number of worker nodes on which software provided by one or more
 CernVM-FS repositories will be used.</p>
-<p>After covering the basic steps in this section, we will outline
-how to make the setup more reliable and performant,
-by setting up a <a href="../proxy/">proxy server</a> and <a href="../stratum1/">CernVM-FS Stratum 1
+<p>After covering the basic client setup in this section, we will outline
+how to make accessing of CernVM-FS repositories more reliable and performant,
+by also setting up a <a href="../proxy/">proxy server</a> and <a href="../stratum1/">CernVM-FS Stratum 1
 replica server</a>.</p>
 </div>
 <h2 id="installing-cernvm-fs-client">Installing CernVM-FS client<a class="headerlink" href="#installing-cernvm-fs-client" title="Permanent link">&para;</a></h2>
@@ -1075,11 +1141,15 @@ that no proxy server should be used by CernVM-FS:</p>
 <h3 id="quota-limit-for-client-cache">Quota limit for client cache<a class="headerlink" href="#quota-limit-for-client-cache" title="Permanent link">&para;</a></h3>
 <p>The <code>CVMFS_QUOTA_LIMIT</code> configuration setting specifies the maximum size of the CernVM-FS client cache (in MBs).</p>
 <p>In the example above, we specify that no more than ~10GB should be used for the client cache.</p>
-<p>Once the quota limit is reached, CernVM-FS will automatically remove files from the cache according
-to the Least Recently Used (LRU) policy, until half of the maximum cache size has been freed.</p>
+<p>When the specified quota limit is reached, CernVM-FS will automatically remove files from the cache according
+to the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU">Least Recently Used (LRU) policy</a>,
+until half of the maximum cache size has been freed.</p>
 <p>The location of the cache directory can be controlled by <code>CVMFS_CACHE_BASE</code> if needed (default: <code>/var/run/cvmfs</code>),
 but <strong>must</strong> be a on a <em>local</em> file system of the client, not a network file system that can be modified by multiple
 hosts.</p>
+<p>Using a directory in a RAM disk (like <code>/dev/shm</code>) for the CernVM-FS client cache
+is possible but not recommended in general, mostly because the internal implementation
+in CernVM-FS to support this is pretty involved, and not extensively tested.</p>
 <p>For more information on cache-related configuration settings,
 <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#cache-settings">see the CernVM-FS documentation</a>.</p>
 <h2 id="completing-the-client-setup">Completing the client setup<a class="headerlink" href="#completing-the-client-setup" title="Permanent link">&para;</a></h2>
@@ -1091,26 +1161,31 @@ to enable auto-mounting of CernVM-FS repositories <em>(optional)</em>.</p>
 <p>All these actions can be performed in one go by running the following command:</p>
 <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>setup
 </code></pre></div>
-<p>Additional options can be passed to this command to disable some of the actions,
+<p>Additional options can be passed to the <code>cvmfs_config setup</code> command to disable some of the actions,
 like <code>nouser</code> to not create the <code>cvmfs</code> user and group, or <code>noautofs</code> not
 update the <code>autofs</code> configuration.</p>
-<details class="note">
-<summary>Impact of not updating <code>autofs</code> configuration <em>(click to expand)</em></summary>
-<p>If you prefer not to use <code>autofs</code>, you will either need to:</p>
+<h3 id="recommendations-for-autofs">Recommendations for <code>autofs</code><a class="headerlink" href="#recommendations-for-autofs" title="Permanent link">&para;</a></h3>
+<p>It is recommended to increase the timeout used by <code>autofs</code> for unmounting due to inactivity,
+by setting additional options in <code>/etc/sysconfig/autofs</code>, for example:</p>
+<div class="copy highlight"><pre><span></span><code><span class="na">OPTIONS</span><span class="o">=</span><span class="s">&quot;--timeout 3600&quot;</span>
+</code></pre></div>
+<p>This sets the timeout for <code>autofs</code> to 1 hour (3600 seconds).</p>
+<p>The default timeout is typically 5 minutes (300 seconds), which is usually specified in <code>/etc/autofs.conf</code>.</p>
+<p>Using "<code>--timeout 0</code>" so that <code>autofs</code> never unmounts is preferable to using static mounts.</p>
+<h3 id="using-static-mounts">Using static mounts<a class="headerlink" href="#using-static-mounts" title="Permanent link">&para;</a></h3>
+<p>If you prefer not to use <code>autofs</code>, you will need to use static mounting, by either:</p>
 <ul>
 <li>
-<p>Manually mount the CernVM-FS repositories you want to use, for example:
+<p>Manually mounting the CernVM-FS repositories you want to use, for example:
   <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>cvmfs<span class="w"> </span>software.eessi.io<span class="w"> </span>/cvmfs/software.eessi.io
 </code></pre></div></p>
 </li>
 <li>
-<p>or update <code>/etc/fstab</code> to ensure that the CernVM-FS repositories
-  are mounted at boot time.</p>
+<p>Updating <code>/etc/fstab</code> to ensure that the CernVM-FS repositories are mounted at boot time.</p>
 </li>
 </ul>
 <p>For more information on mounting repositories,
 <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#mounting">see the CernVM-FS documentation</a>.</p>
-</details>
 <h2 id="checking-client-setup">Checking client setup<a class="headerlink" href="#checking-client-setup" title="Permanent link">&para;</a></h2>
 <p>To ensure that the setup of the CernVM-FS client component is valid, you can run:</p>
 <div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>chksetup
@@ -1124,21 +1199,39 @@ commonly used CernVM-FS repositories.</p>
 <code>cvmfs-config.cern.ch</code>, which is a <a href="https://cvmfs.readthedocs.io/en/stable/cpt-configure.html#the-config-repository">CernVM-FS <em>config repository</em></a>
 that provides public keys and configuration for additional <a href="../../cvmfs/flagship-repositories/">flagship
 CernVM-FS repositories</a>,
-like <a href="../../eessi/high-level-design/#filesystem_layer">EESSI</a>.</p>
-<p>To check whether a specific repository is accessible, we can <em>probe</em> it:</p>
+like <a href="../../eessi/high-level-design/#filesystem_layer"><code>software.eessi.io</code></a>:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/cvmfs/cvmfs-config.cern.ch/etc/cvmfs
+common.conf<span class="w">  </span>config.d<span class="w">  </span>default.conf<span class="w">  </span>domain.d<span class="w">  </span>keys
+
+$<span class="w"> </span>find<span class="w"> </span>/cvmfs/cvmfs-config.cern.ch/etc/cvmfs<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*eessi*&#39;</span>
+/cvmfs/cvmfs-config.cern.ch/etc/cvmfs/domain.d/eessi.io.conf
+/cvmfs/cvmfs-config.cern.ch/etc/cvmfs/keys/eessi.io/eessi.io.pub
+</code></pre></div>
+<h2 id="inspecting-repository-configuration">Inspecting repository configuration<a class="headerlink" href="#inspecting-repository-configuration" title="Permanent link">&para;</a></h2>
+<p>To check whether a specific CernVM-FS repository is accessible, we can <em>probe</em> it:</p>
 <div class="highlight"><pre><span></span><code>$ cvmfs_config probe software.eessi.io
 Probing /cvmfs/software.eessi.io... OK
 </code></pre></div>
-<p>To view the configuration for a specific repository, use <code>showconfig</code>:
+<p>To view the configuration for a specific repository, use <code>cvmfs_config showconfig</code>:
 <div class="copy highlight"><pre><span></span><code>cvmfs_config<span class="w"> </span>showconfig<span class="w"> </span>software.eessi.io
 </code></pre></div></p>
+<p>To check the <em>active</em> configuration for a specific repository used
+by the running CernVM-FS instance,
+use <code>cvmfs_talk -i &lt;repo&gt; parameters</code> (which requires admin privileges):</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_talk<span class="w"> </span>-i<span class="w"> </span>software.eessi.io<span class="w"> </span>parameters
+</code></pre></div>
+<p><code>cvmfs_talk</code> requires that the repository is currently mounted.
+If not, you will see an error like this:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>cvmfs_talk<span class="w"> </span>-i<span class="w"> </span>software.eessi.io<span class="w"> </span>parameters
+Seems<span class="w"> </span>like<span class="w"> </span>CernVM-FS<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>running<span class="w"> </span><span class="k">in</span><span class="w"> </span>/var/lib/cvmfs/shared<span class="w"> </span><span class="o">(</span>not<span class="w"> </span>found:<span class="w"> </span>/var/lib/cvmfs/shared/cvmfs_io.software.eessi.io<span class="o">)</span>
+</code></pre></div>
 <h2 id="additional-repositories">Additional repositories<a class="headerlink" href="#additional-repositories" title="Permanent link">&para;</a></h2>
 <p>To access additional CernVM-FS repositories beyond those that are available by default, you will need to:</p>
 <ul>
 <li>Add the public keys for those repositories into a domain-specific subdirectory of <code>/etc/cvmfs/keys/</code>;</li>
 <li>Add the configuration for those repositories into <code>/etc/cvmfs/domain.d</code> (domain-specific) or <code>/etc/cvmfs/config.d</code> (repository-specific).</li>
 </ul>
-<p>For examples, see the <code>/etc/cvmfs</code> subdirectory in the <a href="https://github.com/cvmfs-contrib/config-repo">config-repo GitHub repository</a>.</p>
+<p>Examples are available in the <code>etc/cvmfs</code> subdirectory of the <a href="https://github.com/cvmfs-contrib/config-repo">config-repo GitHub repository</a>.</p>
 <hr />
 <p><em>(next: <a href="../proxy/">Setting up a proxy server</a>)</em></p>
 
@@ -1147,7 +1240,7 @@ Probing /cvmfs/software.eessi.io... OK
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 30, 2023</span>
       
     
   </small>

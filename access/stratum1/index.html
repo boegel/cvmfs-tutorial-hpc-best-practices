@@ -20,7 +20,7 @@
     
     
       
-        <title>Setting up a replica server - Best Practices for CernVM-FS in HPC</title>
+        <title>Private Stratum 1 replica server - Best Practices for CernVM-FS in HPC</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-a-stratum-1-replica-server" class="md-skip">
+        <a href="#private-stratum-1-replica-server" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setting up a replica server
+              Private Stratum 1 replica server
             
           </span>
         </div>
@@ -555,7 +555,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a client system
+    CernVM-FS client system
   </span>
   
 
@@ -576,7 +576,7 @@
         
   
   <span class="md-ellipsis">
-    Setting up a proxy server
+    Squid proxy server
   </span>
   
 
@@ -602,15 +602,222 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Private Stratum 1 replica server
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Setting up a replica server
+    Private Stratum 1 replica server
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cernvm-fs-as-cdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      CernVM-FS as CDN
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup procedure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-cernvm-fs-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing CernVM-FS server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-repository-public-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding repository public key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-repository-replica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating repository replica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating repository replica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synchronisation-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronisation server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-the-geoapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling the GeoAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-replica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating replica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-synchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial synchronisation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#periodic-synchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Periodic synchronisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Periodic synchronisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log rotation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cron job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      More information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-system-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client system configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client system configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stratum-1-replica-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratum 1 replica server(s)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -784,6 +991,191 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cernvm-fs-as-cdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      CernVM-FS as CDN
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motivation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup procedure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-cernvm-fs-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing CernVM-FS server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-repository-public-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding repository public key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-repository-replica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating repository replica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating repository replica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#synchronisation-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronisation server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disabling-the-geoapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disabling the GeoAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-replica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating replica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initial-synchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial synchronisation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#periodic-synchronisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Periodic synchronisation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Periodic synchronisation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log rotation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cron job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      More information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-system-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client system configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Client system configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stratum-1-replica-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stratum 1 replica server(s)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -800,7 +1192,264 @@
   
 
 
-<h1 id="setting-up-a-stratum-1-replica-server">Setting up a Stratum 1 replica server<a class="headerlink" href="#setting-up-a-stratum-1-replica-server" title="Permanent link">&para;</a></h1>
+<h1 id="private-stratum-1-replica-server">Private Stratum 1 replica server<a class="headerlink" href="#private-stratum-1-replica-server" title="Permanent link">&para;</a></h1>
+<p>In this section of the tutorial, we will set up a <a href="../../appendix/terminology/#stratum1">Stratum 1 replica server</a>, which is the next step towards
+a production-ready CernVM-FS setup.</p>
+<h2 id="cernvm-fs-as-cdn">CernVM-FS as CDN<a class="headerlink" href="#cernvm-fs-as-cdn" title="Permanent link">&para;</a></h2>
+<p>The content of CernVM-FS repositories is served by a set of
+Stratum 1 replica servers (sometimes also called <em>mirror servers</em>),
+which together with the central <a href="../../appendix/terminology/#stratum0">Stratum 0 server</a>
+and the <a href="../../appendix/terminology/#proxy">proxy servers</a> can be seen as
+a <a href="https://en.wikipedia.org/wiki/Content_delivery_network">content delivery network (CDN)</a>.</p>
+<p>A Stratum 1 replica server is a <strong>standard web server</strong> that uses the CernVM-FS server
+component to provide a full mirror of one or more CernVM-FS repositories,
+which are served and managed through a central Stratum 0 server.</p>
+<p>The figure below shows the CernVM-FS network for repositories in the <code>cern.ch</code> domain,
+including the Stratum 1 replica servers which are spread all across the world,
+and a distributed hierarchy of proxy servers which fetch content from the closest Stratum 1.</p>
+<p align="center">
+<img src="../../img/cvmfs-stratum1.png" alt="CernVM-FS content distribution network for the cern.ch domain" width="80%"/></br>
+</p>
+
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>Next to the <em>public</em> Stratum 1 servers that are operated by the maintainers
+of a CernVM-FS repository, you can also set up your own "private" Stratum 1
+replica server in your local network.</p>
+<p>In the context of using CernVM-FS on HPC infrastructure this is highly recommended:</p>
+<ul>
+<li>To improve the overall reliability of the setup, for example in case of (temporariy) loss of connectivity to the public Stratum 1 replica servers;</li>
+<li>To reduce the load on the public Stratum 1 servers;</li>
+<li>To mitigate the impact of poor network bandwidth to the closest public Stratum 1 server;</li>
+<li>To improve the latency and hence start-up time of software in situations where the cache of the proxy servers has insufficient capacity;</li>
+</ul>
+<h2 id="recommendations">Recommendations<a class="headerlink" href="#recommendations" title="Permanent link">&para;</a></h2>
+<p>When setting up a Stratum 1 replica server, you should take the following
+recommendations into account:</p>
+<ul>
+<li>A RAID-protected <strong>low latency storage</strong> setup (like <a href="https://en.wikipedia.org/wiki/Solid-state_drive">SSD</a>
+  or <a href="https://en.wikipedia.org/wiki/NVM_Express">NVMe</a>) should be used,
+  because the CernVM-FS server component will run lots of <code>stat</code> system calls against it.</li>
+<li>An <a href="https://en.wikipedia.org/wiki/Ext3"><code>ext3</code></a> or <a href="https://en.wikipedia.org/wiki/Ext4"><code>ext4</code></a> file system
+  is preferred (rather than <a href="https://en.wikipedia.org/wiki/XFS">XFS</a>).</li>
+<li>A standard Apache web server should be installed, which should be close to the
+  low latency storage. Directory listing is not required.</li>
+</ul>
+<details class="note">
+<summary>Recommendations on monitoring <em>(click to expand)</em></summary>
+<p>It is strongly recommended to actively monitor a Stratum 1 replica server,
+in particular:</p>
+<ul>
+<li>CPU usage;</li>
+<li>disk usage;</li>
+<li>I/O load;</li>
+<li>network bandwidth and latency;</li>
+<li>log messages produced in <a href="https://en.wikipedia.org/wiki/Syslog">syslog</a>;</li>
+</ul>
+<p>The <a href="https://github.com/cvmfs-contrib/cvmfs-servermon"><code>cvmfs-servermon</code></a> package can be used to watch for problems
+in every repository’s <code>.cvmfs_status.json</code> status file.</p>
+<p><a href="https://cvmfs.readthedocs.io/en/stable/cpt-replica.html#monitoring">See also the CernVM-FS documentation</a>.</p>
+</details>
+<details class="note">
+<summary>Recommendations for a high-availability setup <em>(click to expand)</em></summary>
+<p>To create a high-availability setup, it is <em>not</em> recommended to use two or more
+separate Stratum 1 replica servers in a single round-robin service.</p>
+<p>Since they will be updated at different rates, that would cause errors when a client
+sees an updated <a href="../../appendix/terminology/#catalog">catalog</a> from one Stratum 1, but then tries to read corresponding data files from another that does not yet have the files.</p>
+<p>Instead, different Stratum 1 replica servers
+should either be separate configured on the clients, or a pair can be configured 
+as a high availability active/standby pair using the
+<a href="https://github.com/cvmfs-contrib/cvmfs-hastratum1"><code>cvmfs-hastratum1</code></a> package. </p>
+<p>An active/standby pair can also be managed by switching a DNS name between two different servers.</p>
+</details>
+<details class="note">
+<summary>Recommendations for a public Stratum 1 replica server <em>(click to expand)</em></summary>
+<p>For a public Stratum 1 replica server, it is recommended to install a <a href="http://www.squid-cache.org/">Squid frontend</a>
+in front of the Stratum 1, which should be configured as a
+<a href="https://en.wikipedia.org/wiki/Reverse_proxy"><em>reverse proxy</em></a>, and installed
+on the same system as the web server, to reduce the number of points of failure.
+The optimized <a href="https://osg-htc.org/docs/data/frontier-squid/"><code>frontier-squid</code></a>
+distribution is recommended.
+For more information, <a href="https://cvmfs.readthedocs.io/en/stable/cpt-replica.html#squid-configuration">see the CernVM-FS
+configuration</a>.</p>
+<p>Alternatively, separate Squid proxy server machines can be configured in a round-robin DNS configuration
+and each forward to the Apache server.
+Note however that if any of them are down the entire service will be considered down by CernVM-FS clients.
+The impact of this can be mitigated through front end hardware load balancer that quickly takes a system that is down out of service.</p>
+</details>
+<details class="note">
+<summary>Recommendations on garbage collection <em>(click to expand)</em></summary>
+<p>If any CernVM-FS repositories being replicated have
+<a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">garbage collection</a> enabled,
+the Stratum 1 also needs to run garbage collection in order to prevent the disk space usage from growing rapidly.</p>
+<p><a href="https://cvmfs.readthedocs.io/en/stable/cpt-replica.html#maintenance-processes">See the CernVM-FS
+documentation</a> for more details.</p>
+</details>
+<h2 id="setup-procedure">Setup procedure<a class="headerlink" href="#setup-procedure" title="Permanent link">&para;</a></h2>
+<p>To set up a Stratum 1 replica server and configure it to replicate
+a particular CernVM-FS repository, you should:</p>
+<ul>
+<li>Install the <code>cvmfs-server</code> package;</li>
+<li>Add the public key of the CernVM-FS repository you want to replicate to <code>/etc/cvmfs/keys/</code>;</li>
+<li>Create the repository replica;</li>
+<li>Run the initial synchronisation;</li>
+<li>Configure <code>cron</code> to perform periodic synchronisation;</li>
+</ul>
+<p>In the sections below, we will set up a Stratum 1 replica server for the <a href="../../eessi/high-level-design/#filesystem_layer">EESSI CernVM-FS repository <code>software.eessi.io</code></a>.</p>
+<h3 id="installing-cernvm-fs-server">Installing CernVM-FS server<a class="headerlink" href="#installing-cernvm-fs-server" title="Permanent link">&para;</a></h3>
+<p>Start with installing the <code>cvmfs-server</code> package which provides the CernVM-FS client component.</p>
+<p>Although we won't actually use the functionality that requires it,
+we also need to install a package that provides the <code>mod_wsgi</code> Apache adapter module.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">For RHEL-based Linux distros (incl. CentOS, Rocky, Fedora, ...)</label><label for="__tabbed_1_2">For Debian-based Linux distros (incl. Ubuntu)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="copy highlight"><pre><span></span><code><span class="c1"># install cvmfs-release package to add yum repository</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm
+
+<span class="c1"># install CernVM-FS server package</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cvmfs-server
+
+<span class="c1"># install mod_wsgi Apache adapter module</span>
+<span class="c1"># (on versions older than equivalent to RHEL8, install mod_wsgi instead)</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-mod_wsgi
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="copy highlight"><pre><span></span><code><span class="c1"># install cvmfs-release package to add apt repository</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>lsb-release
+curl<span class="w"> </span>-OL<span class="w"> </span>https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cvmfs-release-latest_all.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+
+<span class="c1"># install CernVM-FS server package + the required mod-wsgi</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>cvmfs-server
+
+<span class="c1"># install mod_wsgi Apache adapter module</span>
+<span class="c1"># (on Ubuntu versions older than 22.04, install libapache2-mod-wsgi instead)</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libapache2-mod-wsgi-py3
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="adding-repository-public-key">Adding repository public key<a class="headerlink" href="#adding-repository-public-key" title="Permanent link">&para;</a></h3>
+<p>Add the public key for the repositories in the <code>eessi.io</code> domain to <code>/etc/cvmfs/keys</code>:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/cvmfs/keys/eessi.io/
+sudo<span class="w"> </span>cp<span class="w"> </span>eessi.io.pub<span class="w"> </span>/etc/cvmfs/keys/eessi.io/
+</code></pre></div>
+<p>You can get the contents for <code>eessi.io.pub</code> from the default CernVM-FS config repository on a CernVM-FS client system
+at:</p>
+<div class="copy highlight"><pre><span></span><code>/cvmfs/cvmfs-config.cern.ch/etc/cvmfs/keys/eessi.io/eessi.io.pub
+</code></pre></div>
+<h3 id="creating-repository-replica">Creating repository replica<a class="headerlink" href="#creating-repository-replica" title="Permanent link">&para;</a></h3>
+<p>To create the repository replica, we need to use run the <code>cvmfs_server add-replica</code> command.</p>
+<h4 id="synchronisation-server">Synchronisation server<a class="headerlink" href="#synchronisation-server" title="Permanent link">&para;</a></h4>
+<p>We will need to specify the server that should be used for synchronising
+the repository contents.
+This can either be the <a href="../../appendix/terminology/#stratum0">Stratum 0 server</a>, or a public Stratum 1 replica server
+that was set up to be used for repository synchronisation
+(by having a <code>.cvmfs_master_replica</code> file in the HTTP root directory).</p>
+<p>For EESSI we should use <code>aws-eu-west-s1-sync.eessi.science</code> as synchronisation server.</p>
+<h4 id="disabling-the-geoapi">Disabling the GeoAPI<a class="headerlink" href="#disabling-the-geoapi" title="Permanent link">&para;</a></h4>
+<p>Before creating the replica, we first need to <em>disable</em> the
+<a href="https://cvmfs.readthedocs.io/en/stable/cpt-replica.html#geo-api-setup">Geo API service</a>
+in the CernVM-FS server configuration, to avoid getting this error when creating the replica:</p>
+<div class="highlight"><pre><span></span><code>Installing GeoIP Database... CVMFS_GEO_LICENSE_KEY not set
+fail
+</code></pre></div>
+<p>The Geo API service enables client systems to automatically sort Stratum 1 replica servers geographically,
+so the CernVM-FS client component can prioritize connecting to the closest one.</p>
+<p>This is really only relevant for <em>public</em> Stratum 1 replica servers, not a private Stratum 1 replica server
+that is only accessible from within the local network, like the one we are setting up here.</p>
+<p>To disable the Geo API service, set <code>CVMFS_GEO_DB_FILE</code> to <code>NONE</code> in <code>/etc/cvmfs/server.local</code>:</p>
+<div class="copy highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;CVMFS_GEO_DB_FILE=NONE&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/cvmfs/server.local
+</code></pre></div>
+<h4 id="creating-replica">Creating replica<a class="headerlink" href="#creating-replica" title="Permanent link">&para;</a></h4>
+<p>To actually create the replica, run the <code>cvmfs_server add-replica</code> command as follows:</p>
+<div class="copy highlight"><pre><span></span><code><span class="nv">sync_server</span><span class="o">=</span><span class="s1">&#39;aws-eu-west-s1-sync.eessi.science&#39;</span>
+<span class="nv">repo</span><span class="o">=</span><span class="s1">&#39;software.eessi.io&#39;</span>
+<span class="nv">key_dir</span><span class="o">=</span><span class="s1">&#39;/etc/cvmfs/keys/eessi.io&#39;</span>
+sudo<span class="w"> </span>cvmfs_server<span class="w"> </span>add-replica<span class="w"> </span>http://<span class="si">${</span><span class="nv">sync_server</span><span class="si">}</span>/cvmfs/<span class="si">${</span><span class="nv">repo</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">key_dir</span><span class="si">}</span>
+</code></pre></div>
+<details class="note">
+<summary>Starting Apache <em>(click to expand)</em></summary>
+<p>If creating the replica fails with:</p>
+<div class="highlight"><pre><span></span><code>Apache must be installed and running
+</code></pre></div>
+<p>try starting the <code>httpd</code> service first:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd.service
+</code></pre></div>
+</details>
+<h3 id="initial-synchronisation">Initial synchronisation<a class="headerlink" href="#initial-synchronisation" title="Permanent link">&para;</a></h3>
+<p>After creating the replica, we should trigger the initial synchronisation of the repository replica,
+using the <code>cvmfs_server snapshot</code> command:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_server<span class="w"> </span>snapshot<span class="w"> </span>software.eessi.io
+</code></pre></div>
+<p>Since this will download the <em>full</em> repository contents from the synchronisation
+server that was specified when creating the repository replica, the initial synchronisation may take a while.</p>
+<p>The time required for the initial synchronisation is heavily dependent on the size of the repository,
+and the available network bandwidth to the synchronisation server.</p>
+<h3 id="periodic-synchronisation">Periodic synchronisation<a class="headerlink" href="#periodic-synchronisation" title="Permanent link">&para;</a></h3>
+<p>To ensure that updates to the contents of the CernVM-FS repository are synchronised
+automatically to the Stratum-1 replica server, we should set up a cron job to do periodic synchronisation by running <code>cvmfs_server snapshot -a</code>.</p>
+<h4 id="log-rotation">Log rotation<a class="headerlink" href="#log-rotation" title="Permanent link">&para;</a></h4>
+<p>Before setting up a cron job, we first need to configure log rotation, or running <code>snapshot -a</code> will fail with:
+<div class="highlight"><pre><span></span><code>/etc/logrotate.d/cvmfs does not exist!
+</code></pre></div></p>
+<p>Create <code>/etc/logrotate.d/cvmfs</code> with the following contents:</p>
+<div class="copy highlight"><pre><span></span><code>/var/log/cvmfs/*.log<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>weekly
+<span class="w">    </span>missingok
+<span class="w">    </span>notifempty
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="cron-job">Cron job<a class="headerlink" href="#cron-job" title="Permanent link">&para;</a></h4>
+<p>To synchronize all active replica repositories every 5 minutes, we can create a cron job <code>/etc/cron.d/cvmfs_stratum1_snapshot</code> that runs <code>cvmfs_server snapshot -a -i</code>:</p>
+<div class="copy highlight"><pre><span></span><code>*/5<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>root<span class="w"> </span><span class="nv">output</span><span class="o">=</span><span class="k">$(</span>/usr/bin/cvmfs_server<span class="w"> </span>snapshot<span class="w"> </span>-a<span class="w"> </span>-i<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="k">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$output</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>The <code>-a</code> option enables synchronisation of <em>all active</em> replica repositories,
+while <code>-i</code> indicates that that repositories for which an initial snapshot has not been run should be skipped.</p>
+<p>To verify that periodic synchronisation is working correctly,
+check the contents of the log file:</p>
+<div class="copy highlight"><pre><span></span><code>/var/log/cvmfs/snapshots.log
+</code></pre></div>
+<h3 id="more-information">More information<a class="headerlink" href="#more-information" title="Permanent link">&para;</a></h3>
+<p>For more information on the setup and configuration of a Stratum 1 replica server,
+see the CernVM-FS documentation, in particular the following sections:</p>
+<ul>
+<li><a href="https://cvmfs.readthedocs.io/en/stable/cpt-repo.html#sct-serveranatomy">Notable CernVM-FS Server Locations and Files</a></li>
+<li><a href="https://cvmfs.readthedocs.io/en/stable/apx-serverinfra.html">CernVM-FS Server Infrastructure</a></li>
+</ul>
+<h3 id="client-system-configuration">Client system configuration<a class="headerlink" href="#client-system-configuration" title="Permanent link">&para;</a></h3>
+<p>To actually use the "private" Stratum 1 replica server that has been set up
+we need to change the configuration on each CernVM-FS client system.</p>
+<h4 id="stratum-1-replica-servers">Stratum 1 replica server(s)<a class="headerlink" href="#stratum-1-replica-servers" title="Permanent link">&para;</a></h4>
+<p>The <code>CVMFS_SERVER_URL</code> configuration setting on a client system:</p>
+<ul>
+<li>Is a string value with a semicolon-separated (<code>;</code>) list of known Stratum 1 servers;</li>
+<li>Should be enclosed in quotes;</li>
+<li>Specifies each Stratum 1 as a URL that starts with <code>http://</code>, and ends with <code>/cvmfs/@fqrn@</code></li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>CVMFS_SERVER_URL=&quot;http://s1.test.eu/cvmfs/@fqrn@;http://s1.test.us/cvmfs/@fqrn@&quot;
+</code></pre></div>
+<p>The <code>@fqrn@</code> substring is replaced by CernVM-FS with the <em>fully qualified repository name</em>, like <code>software.eessi.io</code>.</p>
+<p><code>CVMFS_SERVER_URL</code> should be specified in the <em>domain-specific configuration file</em> in <code>/etc/cvmfs</code> that is
+relevant for the CernVM-FS repository we have replicated on our Stratum 1.</p>
+<p>For <code>software.eessi.io</code>, we should add the following to <code>/etc/cvmfs/domain.d/eessi.io.conf</code>:</p>
+<div class="copy highlight"><pre><span></span><code><span class="nv">CVMFS_SERVER_URL</span><span class="o">=</span><span class="s2">&quot;http://STRATUM1_IP_OR_HOSTNAME/cvmfs/@fqrn@&quot;</span>
+</code></pre></div>
+<p>in which "<code>STRATUM1_IP_OR_HOSTNAME</code>" must be replaced with (you guessed it)
+the IP address or hostname of the private Stratum 1 replica server.</p>
+<p>To apply the configuration change, run <code>cvmfs_config reload</code>:</p>
+<div class="copy highlight"><pre><span></span><code>sudo<span class="w"> </span>cvmfs_config<span class="w"> </span>reload
+</code></pre></div>
+<p>To verify that the client configuration was changed correctly, use <code>cvmfs_config stat</code>
+(which requires that the repository is mounted):</p>
+<div class="copy highlight"><pre><span></span><code>ls<span class="w"> </span>/cvmfs/software.eessi.io
+cvmfs_config<span class="w"> </span>stat<span class="w"> </span>-v<span class="w"> </span>software.eessi.io
+</code></pre></div>
+<p>The output line that starts with <code>Connection</code> should mention <code>online</code>, like this:</p>
+<div class="highlight"><pre><span></span><code>Connection: http://.../cvmfs/software.eessi.io through proxy ... (online)
+</code></pre></div>
 <hr />
 <p><em>(next: <a href="../alternatives/">Alternative ways to access CernVM-FS repositories</a>)</em></p>
 
@@ -809,7 +1458,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 30, 2023</span>
       
     
   </small>
