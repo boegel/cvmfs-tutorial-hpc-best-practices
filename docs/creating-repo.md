@@ -33,16 +33,16 @@ which involves starting a *transaction*, making changes, and then *publishing* t
 To optimize metadata access for client systems, you may need to look into creating [nested catalogs](
 https://cvmfs.readthedocs.io/en/stable/cpt-repo.html#managing-nested-catalogs).
 
-If files are frequent removed from the repository, you should consider enabling [garbage
+If files are frequently removed from the repository, you should consider enabling [garbage
 collection](https://cvmfs.readthedocs.io/en/stable/cpt-repo.html#repository-garbage-collection).
 
 ## Public Stratum 1 replica servers
 
-To distribute your repository, you should set up one or more public [Stratum 1 replicate
+To distribute your repository, you should set up one or more public [Stratum 1 replica
 servers](appendix/terminology.md#stratum1), much like we also did in this tutorial (see the
 [Accessing repositories - Private Stratum 1 replica server](access/stratum1.md) section).
 
-For information on this is available [in the CernVM-FS documentation](https://cvmfs.readthedocs.io/en/stable/cpt-replica.html) as well.
+More information on this is available [in the CernVM-FS documentation](https://cvmfs.readthedocs.io/en/stable/cpt-replica.html) as well.
 
 ---
 
