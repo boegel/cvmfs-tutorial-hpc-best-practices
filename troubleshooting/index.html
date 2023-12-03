@@ -1621,8 +1621,6 @@ ls: cannot access &#39;/cvmfs/software.eessi.io&#39;: No such file or directory
 <p>You may see errors messages that suggest network connectivity problems, like:
   <div class="highlight"><pre><span></span><code>Failed to discover HTTP proxy servers (23 - proxy auto-discovery failed)
 </code></pre></div>
-  <div class="highlight"><pre><span></span><code>
-</code></pre></div>
   We will outline some approaches that should help you to determine what could be wrong exactly.</p>
 </li>
 <li>
@@ -1632,14 +1630,14 @@ ls: cannot access &#39;/cvmfs/software.eessi.io&#39;: No such file or directory
 </code></pre></div>
   <div class="highlight"><pre><span></span><code>Failed to transfer ownership of /var/lib/cvmfs/shared to cvmfs
 </code></pre></div>
-  <div class="highlight"><pre><span></span><code># indicates that FUSE has crashed
-Transport endpoint is not connected
-</code></pre></div>
   <div class="highlight"><pre><span></span><code>ls: cannot open directory &#39;/cvmfs/config-repo.cern.ch&#39;: Too many levels of symbolic links
 </code></pre></div>
-  Also here we will give some advice on how you might figure out what is wrong.</p>
+  <div class="highlight"><pre><span></span><code>Transport endpoint is not connected
+</code></pre></div>
+  The last error message indicates that <a href="https://www.kernel.org/doc/html/latest/filesystems/fuse.html">FUSE</a> has failed.</p>
 </li>
 </ul>
+<p>We will give some advice below on how you might figure out what is wrong when seeing error messages like this.</p>
 <h3 id="lag-andor-hangs">Lag and/or hangs<a class="headerlink" href="#lag-andor-hangs" title="Permanent link">&para;</a></h3>
 <p>When you notice lag of even (perceived) hanging when accessing a CernVM-FS repository,
 you should consider revising the <a href="#connectivity">connectivity</a>- and <a href="#cache">cache</a>-related configuration settings.</p>
@@ -1732,7 +1730,15 @@ try triggering a mount of the repository first by accessing it (with <code>ls</c
 there may be an issue with the (active) configuration,
 or there may be a <a href="#connectivity">connectivity problem</a>.</p>
 <h4 id="repository-public-key">Repository public key<a class="headerlink" href="#repository-public-key" title="Permanent link">&para;</a></h4>
-<p>FIXME <code>/etc/cvmfs/keys</code></p>
+<p>In order for CernVM-FS to access a repository the corresponding <em>public key</em> must be available,
+in a domain-specific subdirectory of <code>/etc/cvmfs/keys</code>, like:
+<div class="highlight"><pre><span></span><code>$ ls /etc/cvmfs/keys/cern.ch
+cern-it1.cern.ch.pub  cern-it4.cern.ch.pub  cern-it5.cern.ch.pub
+</code></pre></div></p>
+<p>or in the active CernVM-FS config repository, like for EESSI:</p>
+<div class="highlight"><pre><span></span><code>$ ls /cvmfs/cvmfs-config.cern.ch/etc/cvmfs/keys/eessi.io
+eessi.io.pub
+</code></pre></div>
 <h3 id="connectivity">Connectivity issues<a class="headerlink" href="#connectivity" title="Permanent link">&para;</a></h3>
 <p>There could be various issues related to network connectivity,
 for example a <a href="https://en.wikipedia.org/wiki/Firewall_(computing)"><em>firewall</em></a> blocking connections.</p>
@@ -1865,7 +1871,7 @@ for example:</p>
 </ul>
 <h3 id="caching">Caching woes<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h3>
 <p>CernVM-FS assumes that the local cache directory is trustworthy.</p>
-<p>Although unlikely, problems you observing could be caused by some form
+<p>Although unlikely, problems you are observing could be caused by some form
 of corruption in the CernVM-FS client cache, for example due to problems
 outside of the control of CernVM-FS (like a disk partition running full).</p>
 <p>Even in the absence of problems it may still be interesting to inspect the contents
@@ -1908,7 +1914,7 @@ configuration</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Debug logging is a bit like a firehose - use with care!</p>
 <p>Note that with debug logging enabled <em>every</em> operation performed by CernVM-FS will be logged,
-which quickly generates large files and introduces a signifiant amount of overhead,
+which quickly generates large files and introduces a significant overhead,
 so it <strong>should only be enabled temporarily</strong> when trying to obtain more information on a particular problem.</p>
 </div>
 <div class="admonition warning">
