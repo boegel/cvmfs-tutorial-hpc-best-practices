@@ -48,8 +48,6 @@ Here are a couple of examples:
   ```
   Failed to discover HTTP proxy servers (23 - proxy auto-discovery failed)
   ```
-  ```
-  ```
   We will outline some approaches that should help you to determine what could be wrong exactly.
 
 
@@ -62,13 +60,14 @@ Here are a couple of examples:
   Failed to transfer ownership of /var/lib/cvmfs/shared to cvmfs
   ```
   ```
-  # indicates that FUSE has crashed
-  Transport endpoint is not connected
-  ```
-  ```
   ls: cannot open directory '/cvmfs/config-repo.cern.ch': Too many levels of symbolic links
   ```
-  Also here we will give some advice on how you might figure out what is wrong.
+  ```
+  Transport endpoint is not connected
+  ```
+  The last error message indicates that [FUSE](https://www.kernel.org/doc/html/latest/filesystems/fuse.html) has failed.
+
+  We will give some advice below on how you might figure out what is wrong when seeing error messages like this.
 
 ### Lag and/or hangs
 
@@ -213,7 +212,19 @@ or there may be a [connectivity problem](#connectivity).
 
 #### Repository public key
 
-FIXME `/etc/cvmfs/keys`
+In order for CernVM-FS to access a repository the corresponding *public key* must be available,
+in a domain-specific subdirectory of `/etc/cvmfs/keys`, like:
+```
+$ ls /etc/cvmfs/keys/cern.ch
+cern-it1.cern.ch.pub  cern-it4.cern.ch.pub  cern-it5.cern.ch.pub
+```
+
+or in the active CernVM-FS config repository, like for EESSI:
+
+```
+$ ls /cvmfs/cvmfs-config.cern.ch/etc/cvmfs/keys/eessi.io
+eessi.io.pub
+```
 
 ### Connectivity issues {: #connectivity }
 
@@ -425,7 +436,7 @@ for example:
 
 CernVM-FS assumes that the local cache directory is trustworthy.
 
-Although unlikely, problems you observing could be caused by some form
+Although unlikely, problems you are observing could be caused by some form
 of corruption in the CernVM-FS client cache, for example due to problems
 outside of the control of CernVM-FS (like a disk partition running full).
 
@@ -499,7 +510,7 @@ configuration](#reloading).
 !!! warning "Debug logging is a bit like a firehose - use with care!"
 
     Note that with debug logging enabled *every* operation performed by CernVM-FS will be logged,
-    which quickly generates large files and introduces a signifiant amount of overhead,
+    which quickly generates large files and introduces a significant overhead,
     so it **should only be enabled temporarily** when trying to obtain more information on a particular problem.
 
 !!! warning "Make sure that the debug log file is writable!"
